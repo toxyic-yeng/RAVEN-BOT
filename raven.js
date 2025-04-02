@@ -683,15 +683,14 @@ break;
 const yts = require("yt-search");
 const fetch = require("node-fetch"); 
 
-  try {
-    
+  try {   
     if (!text) {
       return m.reply("What song you want to download.");
     }
 
     let search = await yts(text);
     if (!search.all.length) {
-      return sendReply(client, m, "No results found for your query.");
+      return reply("No results found for your query.");
     }
     let link = search.all[0].url; 
 
@@ -700,7 +699,6 @@ const fetch = require("node-fetch");
     let response = await fetch(apiUrl);
     let data = await response.json();
 
-    
     if (data.status && data.result) {
       const audioData = {
         title: data.result.title,
@@ -709,17 +707,6 @@ const fetch = require("node-fetch");
         format: data.result.format,
         quality: data.result.quality,
       };
-
-await client.sendMessage(
-        m.chat,
-        {
-          document: { url: audioData.downloadUrl },
-          mimetype: "audio/mp3",
-	  caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
-          fileName: `${audioData.title.replace(/[^a-zA-Z0-9 ]/g, "")}.mp3`,
-        },
-        { quoted: m }
-      );
 
 await client.sendMessage(
         m.chat,
@@ -749,12 +736,12 @@ const fetch = require("node-fetch");
 
   try { 
     if (!text) {
-      return sendReply(client, m, "Please specify the video you want to download.");
+      return reply("What video you want to download?");
     }
  
     let search = await yts(text);
     if (!search.all.length) {
-      return sendReply(client, m, "No results found for your query.");
+      return reply(client, m, "No results found for your query.");
     }
     let link = search.all[0].url; 
 
@@ -785,11 +772,11 @@ const fetch = require("node-fetch");
       return;
     } else {
       
-      return reply(client, m, "Unable to fetch the video. Please try again later.");
+      return reply("Unable to fetch the video. Please try again later.");
     }
   } catch (error) {
  
-    return reply(client, m, `An error occurred: ${error.message}`);
+    return reply(`An error occurred: ${error.message}`);
   }
 };
   break;
@@ -931,8 +918,6 @@ const path = require("path");
         continue;
       }
    }
-
-    // If no APIs succeeded
     m.reply("An error occurred. All APIs might be down or unable to process the request.");
   } catch (error) {
     m.reply("Download failed\n" + error.message);
