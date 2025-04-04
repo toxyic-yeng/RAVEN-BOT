@@ -83,7 +83,7 @@ async function startRaven() {
         client.readMessages([mek.key]);
       }
             
- if (autolike === 'true' && mek.key && mek.key.remoteJid === "status@broadcast") {
+ if (autolike === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
         const nickk = await client.decodeJid(client.user.id);
         const emojis = ['😂', '😥', '😇', '🥹', '💥', '💯', '🔥', '💫', '👽', '💗', '❤️‍🔥', '👁️', '👀', '🙌', '🙆', '🌟', '💧', '🎇', '🎆', '♂️', '✅'];
         const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
