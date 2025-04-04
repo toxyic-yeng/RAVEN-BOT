@@ -66,7 +66,7 @@ async function startRaven() {
     setInterval(() => {
       const date = new Date();
       client.updateProfileStatus(
-        `${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.`
+        `📅 DATE/TIME ⌚️  ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })}  ⏲️ DAY ⏰️  ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.\n\n𓅂Raven is currently active and running𓅂.`
       );
     }, 10 * 1000);
   }
@@ -83,12 +83,14 @@ async function startRaven() {
         client.readMessages([mek.key]);
       }
             
-      if (autolike === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
+ if (autolike === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
     const nickk = await client.decodeJid(client.user.id);
-    console.log('Decoded JID:', nickk);
+    const emojis = ['🗿', '💠', '🎭', '🎉', '😳', '💯', '🔥', '💫', '🐒', '💗', '❤️‍🔥', '👁️', '👀', '🙌', '🙆', '🌟', '💧', '🦄', '🟢', '🎎', '✅', '🍆', '🌚', 💚', '💕', '⌚️', '👣'];
+    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    const delayMessage = 2000;
     if (!mek.status) {
-        console.log('Sending reaction to:', mek.key.remoteJid);
-        await client.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: '🎭' } }, { statusJidList: [mek.key.participant, nickk] });
+        await client.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: randomEmoji } }, { statusJidList: [mek.key.participant, nickk] });
+      await sleep(delayMessage);
         console.log('Reaction sent');
     }
 }
