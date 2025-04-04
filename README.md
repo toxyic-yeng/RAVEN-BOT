@@ -21,7 +21,7 @@
 </p>
  
 
-## ```CONTACT ME```
+## ` Contact me`
 
 <p align="center">
 
@@ -45,8 +45,8 @@ Our AI features use random APIs to run, so sometimes they may be down.
 <p align="centre">
 <a href="https://github.com/HunterNick2/RAVEN-BOT/fork"><img src="https://img.shields.io/badge/Fork%20Create-purple?style=for-the-badge&logo=github" alt="FORK RAVEN-BOT" width="160"></a>
 <p/>
+
   
-Linking/Pairing:
 ## ` Pair onrender`
 <p align="centre">
 <a href="https://pairing-raven.onrender.com"><img height= "37" title="Author" src="https://img.shields.io/badge/Session-green?style=for-the-badge&logo=render"></a>
