@@ -26,12 +26,13 @@ const app = express();
 const _ = require("lodash");
 let lastTextTime = 0;
 const messageDelay = 5000;
+const currentTime = Date.now();
 const event = require('./action/events');
 const authenticationn = require('./action/auth');
 const PhoneNumber = require("awesome-phonenumber");
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/ravenexif');
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require('./lib/ravenfunc');
-const { sessionName, session, autobio, autolike, port, mycode, anticall, antiforeign, packname, autoviewstatus } = require("./set.js");
+const { sessionName, session, autobio, autolike, port, mycode, anticall, mode, prefix, antiforeign, packname, autoviewstatus } = require("./set.js");
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 const color = (text, color) => {
   return !color ? chalk.green(text) : chalk.keyword(color)(text);
@@ -66,7 +67,7 @@ async function startRaven() {
     setInterval(() => {
       const date = new Date();
       client.updateProfileStatus(
-        `📅 DATE/TIME ⌚️  ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })}  ⏲️ DAY ⏰️  ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.\n\n𓅂Raven is currently active and running𓅂.`
+        `📅 DATE/TIME ⌚️  ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })}  ⏲️ DAY ⏰️  ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.\n\n☂𝐑𝐚𝐯𝐞𝐧 𝐢𝐬 𝐂𝐮𝐫𝐫𝐞𝐧𝐭𝐥𝐲 𝐀𝐜𝐭𝐢𝐯𝐞 𝐚𝐧𝐝 𝐑𝐮𝐧𝐧𝐢𝐧𝐠☂.`
       );
     }, 10 * 1000);
   }
@@ -154,9 +155,8 @@ if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
     if (anticall === 'TRUE') {
       const callId = callData[0].id;
       const callerId = callData[0].from;
-
+      
       await client.rejectCall(callId, callerId);
-            const currentTime = Date.now();
       if (currentTime - lastTextTime >= messageDelay) {
         await client.sendMessage(callerId, {
           text: "Anticall is active, Only texts are allowed"
@@ -248,7 +248,8 @@ if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
       console.log(color("Congrats, RAVEN-BOT has successfully connected to this server", "green"));
       console.log(color("Follow me on Instagram as Nick_hunter9", "red"));
       console.log(color("Text the bot number with menu to check my command list"));
-      client.sendMessage(client.user.id, { text: `𝗕𝗼𝘁 𝗵𝗮𝘀 𝗦𝘁𝗮𝗿𝘁𝗲𝗱 » » »【𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧】 ` });
+      const Texxt = `*╭═══════❖•ೋ° °ೋ•❖══════╮*\n`+`┊𓅂 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 » »【𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧】\n`+`┊𓅂 𝗠𝗼𝗱𝗲 »» ${mode}\n`+`┊𓅂 𝗣𝗿𝗲𝗳𝗶𝘅 »» ${prefix}\n`+`*╰═══════❖•ೋ° °ೋ•❖══════╯*`
+      client.sendMessage(client.user.id, { text: Texxt });
     }
   });
 
