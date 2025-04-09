@@ -1,6 +1,6 @@
 {
   "name": "RAVEN-BOT",
-  "description": "I don't know what I'm doing",
+  "description": "A simple yet complicated WhatsApp bot, ♤Enjoy♡",
   "keywords": [
     "bot",
     "whatsapp",
@@ -104,16 +104,18 @@
       "required": true
 },
  "SESSION": {
-      "description": "Paste your Session id here, as it is required for authenticationn.",
+      "description": "Paste your Session id you received after linking here, as it is required for authenticationn. important!",
       "required": true
 },
  "MODE": {
       "description": "Input PRIVATE if you don't want other people to use your bot",
+      "value": "PUBLIC",
       "required": true
     },
     
  "AUTOBIO": {
       "description": "Input TRUE if you want bot to autoupdate its about with current time and date.",
+      "value": "TRUE",
       "required": false
 },
  "APP_NAME": {
@@ -142,6 +144,7 @@
     },
     "AUTOLIKE_STATUS": {
       "description": "input TRUE if you want bot to autolike status updates. This will only work if autostatus view is TRUE",
+      "value": "TRUE",
       "required": false
     }
   },
