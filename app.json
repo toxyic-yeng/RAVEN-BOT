@@ -30,16 +30,19 @@
     },
     "ANTIDELETE": {
       "description": "Input TRUE if you want bot to foward back deleted messages. The messages will be fowarded to your Pm, Message yourself.",
+      "value": "TRUE",
       "required": false
     },
     
     
     "AUTOREJECT_CALL": {
       "description": "Put TRUE if you want bot to decline all incoming calls",
+      "value": "TRUE",
       "required": false
     },
     "ANTIFOREIGN": {
       "description": "Input TRUE if you want bot to automatically remove foreigners who are not from your country code joining a group",
+      "value": "FALSE",
       "required": false
     },
     "HEROKU_API": {
@@ -48,10 +51,12 @@
     },
     "BAD_WORD": {
       "description": "List words separated witj commas that will be considered as bad and will trigger bot to kick. Example: fuck, pussy, hoe",
+      "value": "fuck,pussy,slut,bitch,cock,stupid",
       "required": false
     },
     "BAD_WORD_KICK": {
       "description": "Put here TRUE if you want the bot to automatically kick group members using words that you have listed as bad",
+      "value": "TRUE",
       "required": false
     },
     "ANTITAG": {
@@ -60,14 +65,17 @@
     },
       "AUTOREAD": {
       "description": "Put here TRUE if you want bot to automatically bluetick messages in private chats",
+      "value": "FALSE",
       "required": true
 },
  "AUTOVIEW": {
       "description": "Input TRUE if you want bot to automatically read status update",
+      "value": "TRUE",
       "required": true
 },
  "WA_PRESENCE": {
       "description": "Input either recording, typing, online, or leave it blank. This enables bot to simulate typing or recording or online status even if you're not online.",
+      "value": "recording",
       "required": true
 },
  "WELCOMEGOODBYE": {
@@ -77,11 +85,13 @@
 },
    
  "ANTILINK": {
-      "description": "Input TRUE if you want bot to kick link senders",
+      "description": "Input TRUE if you want bot to kick link senders only whatsapp group links",
+      "value": "TRUE",
       "required": true
 },
  "ANTILINK_ALL": {
-      "description": "Input TRUE if you want bot to kick users sending any links.",
+      "description": "Input TRUE if you want bot to kick users sending any kind of link.",
+      "value": "FALSE",
       "required": true
 },
  "ANTIBOT": {
@@ -124,6 +134,7 @@
 },
  "MENU_TYPE": {
       "description": "Input either VIDEO, LINK or IMAGE. This will allow bot to display different dynamic menu types",
+      "value": "IMAGE",
       "required": false
 
     
