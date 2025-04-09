@@ -39,7 +39,7 @@ const color = (text, color) => {
 };
 
 async function startRaven() {
-                 await authenticationn();  
+  await authenticationn();  
   const { state, saveCreds } = await useMultiFileAuthState("session");
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
@@ -58,7 +58,7 @@ async function startRaven() {
   const client = ravenConnect({
     logger: pino({ level: "silent" }),
     printQRInTerminal: true,
-    browser: ["RAVEN - AI", "Safari", "5.1.7"],
+    browser: ["RAVEN-AI", "Safari", "5.1.7"],
     auth: state,
     syncFullHistory: true,
   });
@@ -67,7 +67,7 @@ async function startRaven() {
     setInterval(() => {
       const date = new Date();
       client.updateProfileStatus(
-        `📅 DATE/TIME ⌚️  ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })}  ⏲️ DAY ⏰️  ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.\n\n☂𝐑𝐚𝐯𝐞𝐧 𝐢𝐬 𝐂𝐮𝐫𝐫𝐞𝐧𝐭𝐥𝐲 𝐀𝐜𝐭𝐢𝐯𝐞 𝐚𝐧𝐝 𝐑𝐮𝐧𝐧𝐢𝐧𝐠☂.`
+        `📅 DATE/TIME ⌚️  ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })}  ⏲️ DAY ⏰️  ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.\n\n𝐑𝐚𝐯𝐞𝐧 𝐢𝐬 𝐂𝐮𝐫𝐫𝐞𝐧𝐭𝐥𝐲 𝐀𝐜𝐭𝐢𝐯𝐞 𝐚𝐧𝐝 𝐑𝐮𝐧𝐧𝐢𝐧𝐠☂.`
       );
     }, 10 * 1000);
   }
@@ -91,7 +91,7 @@ async function startRaven() {
         const delayMessage = 2000;
         await client.sendMessage(mek.key.remoteJid, { react: { text: randomEmoji, key: mek.key, } }, { statusJidList: [mek.key.participant, nickk] });
         await sleep(delayMessage);
-   console.log('Reaction sent successfully');
+   console.log('Reaction sent successfully✅️');
           }
             
 if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
@@ -393,7 +393,7 @@ if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
 
 app.use(express.static("pixel"));
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
-app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
+app.listen(port, () => console.log(`📡 Connected on port http://localhost:${port} 🛰`));
 
 startRaven();
 
