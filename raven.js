@@ -10,6 +10,7 @@ const Genius = require("genius-lyrics");
 const yts = require("yt-search");
 const { DateTime } = require('luxon');
 const uploadtoimgur = require('./lib/imgur');
+const uploadToCatbox = require('./lib/catbox.js');
 const advice = require("badadvice");
 const {c, cpp, node, python, java} = require('compile-run');
 const acrcloud = require("acrcloud"); 
@@ -638,7 +639,7 @@ break;
         break;
 		      
 //========================================================================================================================//	      
-	case "play": {
+	case "play2": {
  const yts = require("yt-search");
 
     try {
@@ -849,7 +850,7 @@ let options = []
 		break;
 
 //========================================================================================================================//		      
-	      case 'play2':{
+	      case 'play':{
 const axios = require('axios');
 const yts = require("yt-search");
 const ffmpeg = require("fluent-ffmpeg");
@@ -1795,7 +1796,7 @@ m.reply("*Wait a moment...*");
       return m.reply("𝗛𝘂𝗵 𝘁𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲! 𝗣𝗹𝗲𝗮𝘀𝗲 𝗧𝗮𝗴 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵 !");
     }
     let _0x3439a2 = await client.downloadAndSaveMediaMessage(m.quoted);
-    let _0x3dfb7c = await uploadtoimgur(_0x3439a2);
+    let _0x3dfb7c = await uploadToCatbox(_0x3439a2);
     m.reply("𝗔 𝗺𝗼𝗺𝗲𝘁, 𝗹𝗲𝗺𝗺𝗲 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗜𝗺𝗮𝗴𝗲...");
     const _0x4e9e6a = new _0x817910("AIzaSyDJUtskTG-MvQdlT4tNE319zBqLMFei8nQ");
     async function _0x309a3c(_0x1400ed, _0x1a081e) {
@@ -1845,7 +1846,7 @@ if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶�
 let fdr = await client.downloadAndSaveMediaMessage(m.quoted)
 
 
-                    let fta = await uploadtoimgur(fdr)
+                    let fta = await uploadToCatbox(fdr)
                     m.reply("𝗔 𝗠𝗼𝗺𝗲𝗻𝘁, 𝗥𝗮𝘃𝗲𝗻[𝗥𝗔𝗩𝗘𝗡-𝗔𝗜] 𝗶𝘀 𝗮𝗻𝗮𝗹𝘆𝘇𝗶𝗻𝗴 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲. . .");
 
 
@@ -1882,7 +1883,7 @@ m.reply("I am unable to analyze images at the moment\n" + e)
   ;
   try {
     let _0x11f50e = await client.downloadAndSaveMediaMessage(_0x44b3e0);
-    let _0x45392d = await uploadtoimgur(_0x11f50e);
+    let _0x45392d = await uploadToCatbox(_0x11f50e);
     m.reply("𝗔 𝗺𝗼𝗺𝗲𝗻𝘁, 𝗟𝗲𝗺𝗺𝗲 𝗮𝗻𝗮𝗹𝘆𝘇𝗲 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲. . .");
     let _0x4f137e = await (await fetch("https://bk9.fun/ai/geminiimg?url=" + _0x45392d + "&q=" + text)).json();
     const _0x4bfd63 = {
