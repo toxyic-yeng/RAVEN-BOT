@@ -34,7 +34,7 @@
 ## DISCLAIMER
 - Modifying the bot structure is at your own risk. We won't offer technical support in case of errors resulting.
 
-- Do not delete the credits given, you can add yourself too.
+- Do not delete the credits given, you can add yourself instead.
 
 ## FEATURES
 This is a highly customisable simple whatsapp bot with group management features and few media commands and chatgpt courtesy of Openai.
