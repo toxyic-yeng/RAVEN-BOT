@@ -89,8 +89,8 @@ module.exports = raven = async (client, m, chatUpdate, store) => {
      const groupAdmin = m.isGroup ? await getGroupAdmins(participants) : ""; 
      const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false; 
      const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
-     const maindev = '254114660061';
-     const maindev2 = maindev.split(",");
+     const Dev = '254114660061';
+     const Devv = Dev.split(",");
      const date = new Date()  
      const timestamp = speed(); 
      const Rspeed = speed() - timestamp 
@@ -620,7 +620,7 @@ break;
 //========================================================================================================================//
 		      
 case "owner":
-client.sendContact(from, maindev2, m)
+client.sendContact(m.chat, Devv, m)
 break;
 
 //========================================================================================================================//
