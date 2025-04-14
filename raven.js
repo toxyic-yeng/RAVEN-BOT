@@ -3,6 +3,7 @@ const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, g
 const fs = require("fs");
 const path = require('path');
 const util = require("util");
+const mumaker = require("mumaker");
 global.axios = require('axios').default
 const chalk = require("chalk");
 const speed = require("performance-now");
@@ -89,8 +90,7 @@ module.exports = raven = async (client, m, chatUpdate, store) => {
      const groupAdmin = m.isGroup ? await getGroupAdmins(participants) : ""; 
      const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false; 
      const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
-     const Dev = '254114660061';
-     const Devv = Dev.split(",");
+     const Dev = '254114660061'.split(",");
      const date = new Date()  
      const timestamp = speed(); 
      const Rspeed = speed() - timestamp 
@@ -620,7 +620,7 @@ break;
 //========================================================================================================================//
 		      
 case "owner":
-client.sendContact(m.chat, Devv, m)
+client.sendContact(m.chat, Dev, m)
 break;
 
 //========================================================================================================================//
@@ -823,7 +823,7 @@ const fetch = require("node-fetch");
 //========================================================================================================================//		      
 		      case "credits": 
   
-              client.sendMessage(m.chat, { image: { url: 'https://i.imgur.com/Jp8zoUC.jpeg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Nick Hunter ➪ Kenya\n - Actively compiling and debugging parts of this bot script\nhttps://github.com/HunterNick2\n\n - Keithkeizzah (Ghost) ➪ Kenya\n - Compiling and debugging parts of this bot script\nhttps://github.com/Keithkeizzah\n\n - Fortunatus Mokaya ➪ Kenya\n - Founder of the bot Base\nhttps://github.com/Fortunatusmokaya\n\n𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧`}, { quoted: m}); 
+              client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/duv8ac.jpg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Nick Hunter ➪ Kenya\n - Actively compiling and debugging parts of this bot script\nhttps://github.com/HunterNick2\n\n - Keithkeizzah (Ghost) ➪ Kenya\n - Compiling and debugging parts of this bot script\nhttps://github.com/Keithkeizzah\n\n - Fortunatus Mokaya ➪ Kenya\n - Founder of the bot Base\nhttps://github.com/Fortunatusmokaya\n\n𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧`}, { quoted: m}); 
                
 		      break;
 
@@ -926,11 +926,10 @@ const path = require("path");
 
 //========================================================================================================================//		      
 	      case "inspect": {
-		      const fetch = require('node-fetch');
+const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
     if (!text) return m.reply("Provide a valid web link to fetch! The bot will crawl the website and fetch its HTML, CSS, JavaScript, and any media embedded in it.");
-
     if (!/^https?:\/\//i.test(text)) {
         return m.reply("Please provide a URL starting with http:// or https://");
     }
@@ -1001,7 +1000,6 @@ const cheerio = require('cheerio');
 
 //========================================================================================================================//		      
 	      case 'metallic': {
-		      var mumaker = require("mumaker");
 		     if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Metallic Nick");
       return;
@@ -1022,8 +1020,7 @@ const cheerio = require('cheerio');
 	break; 
 
 //========================================================================================================================//		      
-	      case 'ice': {
-		      var mumaker = require("mumaker");
+	      case 'ice': {		      
 		     if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Ice Nick");
       return;
@@ -1044,8 +1041,7 @@ const cheerio = require('cheerio');
 	break; 
 
 //========================================================================================================================//		      
-	      case 'snow': {
-		      var mumaker = require("mumaker");
+	      case 'snow': {	      
 		     if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Snow Nick");
       return;
@@ -1066,8 +1062,7 @@ const cheerio = require('cheerio');
 	break;
 
 //========================================================================================================================//		      
-	      case 'impressive': {
-		      var mumaker = require("mumaker");
+	      case 'impressive': {		      
 		     if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "impressive Nick");
       return;
@@ -1088,9 +1083,7 @@ const cheerio = require('cheerio');
 	break; 
 
 //========================================================================================================================//		      
-	      case 'noel': {
-		      var mumaker = require("mumaker");
-		     
+	      case 'noel': {	      		     
 		      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Noel myself");
     return;
@@ -1115,8 +1108,6 @@ m.reply("*Wait a moment...*");
 
 //========================================================================================================================//		      
 	      case 'water':{
-		      var mumaker = require("mumaker");
-		     
 		      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Water myself");
     return;
@@ -1140,9 +1131,7 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		
-	      case 'matrix':{
-		      var mumaker = require("mumaker");
-		     
+	      case 'matrix':{		      		     
 		      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Matrix myself");
     return;
@@ -1165,9 +1154,7 @@ m.reply("*Wait a moment...*");
 }
 	 break;
 //========================================================================================================================//		
-	      case 'light': {
-		      var mumaker = require("mumaker");
-		     
+	      case 'light': {		      
 		      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Light myself");
     return;
@@ -1191,8 +1178,7 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		      
-	      case 'neon':{
-		var mumaker = require("mumaker");
+	      case 'neon':{		
 		     if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Neon Nick");
       return;
@@ -1213,8 +1199,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'silver': case 'silva': {
-		      var mumaker = require("mumaker");
+	      case 'silver': case 'silva': {		      
 		          if (!text || text == " ") {
       m.reply("Example Usage : " + prefix + "Silva Nick");
       return;
@@ -1235,8 +1220,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'devil':{
-		      var mumaker = require("mumaker");
+	      case 'devil':{		      
 		          if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Devil Nick");
       return;
@@ -1257,8 +1241,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'typography': {
-		      var mumaker = require("mumaker");
+	      case 'typography': {   
 		          if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Typography Nick");
       return;
@@ -1279,8 +1262,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'purple': {
-		 var mumaker = require("mumaker");
+	      case 'purple': {		 
 		      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "purple Nick");
       return;
@@ -1301,8 +1283,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'thunder':{
-		      var mumaker = require("mumaker"); 
+	      case 'thunder':{		       
 		      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Thunder Nick");
       return;
@@ -1323,8 +1304,7 @@ m.reply("*Wait a moment...*");
   break;
 
 //========================================================================================================================//		      
-	case 'leaves': {
-		     var mumaker = require("mumaker"); 
+	case 'leaves': {		     
 		      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "Leaves RAVEN-BOT");
       return;
@@ -1347,8 +1327,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case '1917': {
-		     var mumaker = require("mumaker"); 
+	      case '1917': {		      
 		      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "1917 Hunter");
       return;
@@ -1371,8 +1350,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'arena': {
-		     var mumaker = require("mumaker"); 
+	      case 'arena': {		      
 		      if (!text || text == "") {
       m.reply("Example Usage : " + prefix + "arena RAVEN-BOT");
       return;
@@ -1395,8 +1373,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'hacker': {
-		      var mumaker = require("mumaker");
+	      case 'hacker': {		      
 		      if (!text || text == "") {
     m.reply("Example usage :  " + prefix + "hacker Nick");
     return;
@@ -1419,8 +1396,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'sand': {
-	 var mumaker = require("mumaker");
+	      case 'sand': {	 
 		      if (!text || text == "") {
     m.reply("Example Usage : " + prefix + "sand Raven");
     return;
@@ -1443,8 +1419,7 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//		      
-	      case 'dragonball': {
-	var mumaker = require("mumaker");	      
+	      case 'dragonball': {		      
     if (!text || text == "") {
       m.reply("Example usage :  " + prefix + "dragonball Nick");
       return;
@@ -1467,8 +1442,7 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		      
-	      case 'naruto': {
-		var mumaker = require("mumaker");      
+	      case 'naruto': {		      
 		      if (!text || text == "") {
       m.reply("Example usage : " + prefix + "naruto Hunter");
       return;
@@ -1491,8 +1465,7 @@ m.reply("*Wait a moment...*");
 	  break;
 
 //========================================================================================================================//		      
-	      case 'graffiti': {
-		    var mumaker = require("mumaker");  
+	      case 'graffiti': {		      
 		      if (!text || text == "") {
     m.reply("Example usage : " + prefix + "graffiti Nick");
     return;
@@ -1515,8 +1488,7 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		      
-	      case 'cat': {
-		   var mumaker = require("mumaker");
+	      case 'cat': {		   
 		  if (!text || text == "") { m.reply("Example usage : * " + prefix + "cat Nick");
     return;
   }
@@ -1538,9 +1510,7 @@ m.reply("*Wait a moment...*");
         break;
 
 //========================================================================================================================//		      
-	      case 'gold': {
-	    var mumaker = require("mumaker");
-		     
+	      case 'gold': {		     
 		      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Gold myself");
     return;
@@ -1564,9 +1534,7 @@ m.reply("*Wait a moment...*");
 	 break;
 
 //========================================================================================================================//		      
-		      case 'child': {
-	    var mumaker = require("mumaker");
-		     
+		      case 'child': {	    		     
 		      if (!text || text == "") {
     m.reply("Example usage: " + prefix + "Child Raven");
     return;
