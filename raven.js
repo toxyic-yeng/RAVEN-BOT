@@ -1891,7 +1891,7 @@ case "kill": case "kickall": {
               client.groupParticipantsUpdate(m.chat, raveni, "remove");
               setTimeout(() => {
                 m.reply("Succesfully removed All group participants✅️.\n\nGoodbye group owner 👋, its too cold in here 🥶.");
-	await client.groupLeave(m.chat);	      
+client.groupLeave(m.chat);	      
               }, 1000);
             }, 1000);
           }, 1000);
