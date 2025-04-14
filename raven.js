@@ -1,5 +1,5 @@
 
-const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
+const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, getBinaryNodeChild, getBinaryNodeChildren, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const path = require('path');
 const util = require("util");
@@ -2315,21 +2315,17 @@ m.reply("An error occured.")
 		      
 //========================================================================================================================//		      
 	case "removebg": {
-		      try {
+try {
 
 const cap = "𝗘𝗱𝗶𝘁𝗲𝗱 𝗯𝘆 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧";
-
 if (!m.quoted) return m.reply("Send the image then tag it with the command.");
-
-   if (!/image/.test(mime)) return m.reply("That is not an image, try again while quoting an actual image.");             
+if (!/image/.test(mime)) return m.reply("That is not an image, try again while quoting an actual image.");             
 
 let fdr = await client.downloadAndSaveMediaMessage(m.quoted)
-
-                    let fta = await uploadtoimgur(fdr)
+let fta = await uploadToCatbox(fdr)
                     m.reply("𝗔 𝗺𝗼𝗺𝗲𝗻𝘁, 𝗥𝗮𝘃𝗲𝗻 𝗶𝘀 𝗲𝗿𝗮𝘀𝗶𝗻𝗴 𝘁𝗵𝗲 𝗯𝗮𝗰𝗸𝗴𝗿𝗼𝘂𝗻𝗱. . .");
 
 const image = `https://api.dreaded.site/api/removebg?imageurl=${fta}`
-
 await client.sendMessage(m.chat, { image: { url: image }, caption: cap}, {quoted: m });
 
 } catch (error) {
@@ -2616,7 +2612,7 @@ if (isTele) {
                 atas = text.split('|')[0] ? text.split('|')[0] : '-'
                 bawah = text.split('|')[1] ? text.split('|')[1] : '-'
                 let dwnld = await client.downloadAndSaveMediaMessage(qmsg)
-                let fatGans = await uploadtoimgur(dwnld)
+                let fatGans = await uploadToCatbox(dwnld)
                 let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(bawah)}/${encodeURIComponent(atas)}.png?background=${fatGans}`
                 let pop = await client.sendImageAsSticker(m.chat, smeme, m, {
                     packname: packname,
@@ -2678,16 +2674,64 @@ if (!text) throw 'Provide a valid Bot Baileys Function to evaluate'
      break;
 
 //========================================================================================================================//		      
-	case 'add':
-		      if (!text) return reply('provide a number to be added in this format. \n\n add 254114660061'); 
-                if (!m.isGroup) throw group;
-                if(!isAdmin) throw admin;
-                if (!isBotAdmin) throw botAdmin;
-                let blockwwww = text;
-                await client.groupParticipantsUpdate(m.chat, [blockwwww], 'add')
-                reply(`succesfully added`)
-                break;
+	case "add": {
+    if (!isBotAdmin) throw botAdmin;
+	if (!isAdmin) throw admin;
+	if (!m.isGroup) throw group;
+			      
+if (!text) return m.reply("provide number to be added in this format.\n\nadd 254114660061");
+        const _participants = participants.map((user) => user.id);
+        const users = (await Promise.all(
+            text.split(',')
+                .map((v) => v.replace(/[^0-9]/g, ''))
+                .filter((v) => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
+                .map(async (v) => [
+                    v,
+                    await client.onWhatsApp(v + '@s.whatsapp.net'),
+                ]),
+        )).filter((v) => v[1][0]?.exists).map((v) => v[0] + '@c.us');
 
+        const response = await client.query({
+            tag: 'iq',
+            attrs: {
+                type: 'set',
+                xmlns: 'w:g2',
+                to: m.chat,
+            },
+            content: users.map((jid) => ({
+                tag: 'add',
+                attrs: {},
+                content: [{ tag: 'participant', attrs: { jid } }],
+            })),
+        });
+
+        const add = getBinaryNodeChild(response, 'add');
+        const participant = getBinaryNodeChildren(add, 'participant');
+        let respon = await client.groupInviteCode(m.chat);
+
+for (const user of participant.filter((item) => item.attrs.error === 401 || item.attrs.error === 403 || item.attrs.error === 408)) {
+    const jid = user.attrs.jid;
+    const content = getBinaryNodeChild(user, 'add_request');
+    const invite_code = content.attrs.code;
+    const invite_code_exp = content.attrs.expiration;
+
+    let themm;
+    if (user.attrs.error === 401) {
+        themm = `@${jid.split('@')[0]} has blocked the bot.`;
+    } else if (user.attrs.error === 403) {
+        themm = `@${jid.split('@')[0]} has set privacy settings for group adding.`;
+    } else if (user.attrs.error === 408) {
+        themm = `@${jid.split('@')[0]} recently left the group.`;
+    } 
+    return m.reply(themm);
+
+    let links = `${pushname} is trying to add or request you to join the group ${groupMetadata.subject}:\n\nhttps://chat.whatsapp.com/${respon}\n\n${botname} 💠`;
+
+    await client.sendMessage(jid, { text: links }, { quoted: m });
+}
+    }
+	break;
+		      
 //========================================================================================================================//		      
 case "kill": case "kickall":
 	  if (!m.isGroup) throw group;
@@ -2697,7 +2741,7 @@ break;
 //========================================================================================================================//		      
   case "system": 
   
-              client.sendMessage(m.chat, { image: { url: 'https://i.imgur.com/YpHG3eT.jpeg' }, caption:`*𝐁𝐎𝐓 𝐍𝐀𝐌𝐄: 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧*\n\n*𝐒𝐏𝐄𝐄𝐃: ${Rspeed.toFixed(4)} 𝐌𝐒*\n\n*𝐑𝐔𝐍𝐓𝐈𝐌𝐄: ${runtime(process.uptime())}*\n\n*𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌: 𝗛𝗲𝗿𝗼𝗸𝘂*\n\n*𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄: 𝗥𝗮𝘃𝗲𝗻*\n\n*𝐋𝐈𝐁𝐑𝐀𝐑𝐘: Baileys*\n\n𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑: 𝗡𝗶𝗰𝗸༆`}); 
+              client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/duv8ac.jpg' }, caption:`*𝐁𝐎𝐓 𝐍𝐀𝐌𝐄: 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧*\n\n*𝐒𝐏𝐄𝐄𝐃: ${Rspeed.toFixed(4)} 𝐌𝐒*\n\n*𝐑𝐔𝐍𝐓𝐈𝐌𝐄: ${runtime(process.uptime())}*\n\n*𝐏𝐋𝐀𝐓𝐅𝐎𝐑𝐌: 𝗛𝗲𝗿𝗼𝗸𝘂*\n\n*𝐇𝐎𝐒𝐓𝐍𝐀𝐌𝐄: 𝗥𝗮𝘃𝗲𝗻*\n\n*𝐋𝐈𝐁𝐑𝐀𝐑𝐘: Baileys*\n\n𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑: 𝗡𝗶𝗰𝗸༆`}); 
  break;
 
 //========================================================================================================================//		      
@@ -2791,9 +2835,7 @@ await client.sendMessage(m.chat, { text: `Quoted text is your token. To fetch me
 
 let fdr = await client.downloadAndSaveMediaMessage(qmsg);
 
-                    const fta = await uploadtoimgur(fdr);
-
-   await  UploadFileUgu()
+const fta = await uploadToCatbox(fdr);
 
 const imagelink = `https://aemt.me/hacker2?link=${fta}`;
 
@@ -3320,7 +3362,7 @@ const title = data.result.title;
    break;
 
 //========================================================================================================================//		      
- case "icon": { 
+ case "icon": case 'gpp': { 
     if (!m.isGroup) throw group; 
     if (!isAdmin) throw admin; 
     if (!isBotAdmin) throw botAdmin; 
@@ -3329,12 +3371,12 @@ const title = data.result.title;
     if (/webp/.test(mime)) throw `Send or tag an image with the caption ${prefix + command}`; 
     let media = await client.downloadAndSaveMediaMessage(quoted); 
     await client.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media)); 
-    reply('Group icon updated'); 
+    reply('Group icon updated Successfully✅️'); 
     } 
     break;
 
 //========================================================================================================================//		      
-          case "revoke": 
+ case "revoke": 
  case "newlink": 
  case "reset": { 
    if (!m.isGroup) throw group; // add "new Error" to create a new Error object 
@@ -3351,7 +3393,7 @@ const title = data.result.title;
 
 //========================================================================================================================//		      
           case "delete": case "del": { 
-                  if (!m.isGroup) throw group; 
+if (!m.isGroup) throw group; 
   if (!isBotAdmin) throw botAdmin; 
   if (!isAdmin) throw admin; 
     if (!m.quoted) throw `No message quoted for deletion`; 
@@ -3378,7 +3420,7 @@ const title = data.result.title;
                  if (!isAdmin) throw admin; 
                  if (!text) throw 'Provide the text for the group subject.'; 
                  await client.groupUpdateSubject(m.chat, text); 
- m.reply('Group name successfully updated! 💀'); 
+ m.reply('Group name successfully updated✅️'); 
              } 
              break; 
 
@@ -3389,7 +3431,7 @@ const title = data.result.title;
                  if (!isAdmin) throw admin; 
                  if (!text) throw 'Provide the text for the group description' 
                  await client.groupUpdateDescription(m.chat, text); 
- m.reply('Group description successfully updated! 🥶'); 
+ m.reply('Group description successfully updated✅️'); 
              } 
  break; 
 
@@ -3816,7 +3858,7 @@ if (!text) return m.reply("No emojis provided ? ")
 	break;
 
 //========================================================================================================================//		      
-        case "toimage": case "photo": { 
+        case "toimg": case "photo": { 
     if (!quoted) throw 'Tag a static video with the command!'; 
     if (!/webp/.test(mime)) throw `Tag a sticker with ${prefix + command}`; 
   
@@ -3884,16 +3926,13 @@ if (!text) return m.reply("No emojis provided ? ")
     let media = await client.downloadAndSaveMediaMessage(quoted);
 		
                     await client.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media)); 
-    reply `Bot's profile picture has been successfully updated!`; 
+    reply `Bot's profile picture has been successfully updated✅️`; 
 	  }
     break;
 
 //========================================================================================================================//		      
           case 'broadcast': { 
-         if (!Owner) { 
-             throw NotOwner
-             return; 
-         } 
+         if (!Owner) throw NotOwner; 
          if (!text) { 
              reply("❌ No broadcast message provided!") 
              return; 
@@ -4014,7 +4053,7 @@ case "block": {
             stringArrayThreshold: 1
         });
 
-        console.log("Successfully encrypted the code");
+        console.log("Successfully encrypted the code✅️");
         m.reply(obfuscationResult.getObfuscatedCode());
     } else {
         m.reply("Quote/Tag a valid JavaScript code to encrypt!");
@@ -4055,19 +4094,17 @@ break;
 if (!m.isGroup) return m.reply("This command is meant for groups");
 
 let info = await client.groupMetadata(m.chat);
-
 let ts = await convertTimestamp(info.creation);
 
 try {
         pp = await client.profilePictureUrl(chat, 'image');
       } catch {
-        pp = 'https://i.imgur.com/l6rYr1f.jpeg';
+        pp = 'https://files.catbox.moe/duv8ac.jpg';
       }
 
 await client.sendMessage(m.chat, { image: { url: pp }, 
           caption: `_Name_ : *${info.subject}*\n\n_ID_ : *${info.id}*\n\n_Group owner_ : ${'@'+info.owner.split('@')[0]} || 'No Creator'\n\n_Group created_ : *${ts.day}, ${ts.date} ${ts.month} ${ts.year}, ${ts.time}*\n\n_Participants_ : *${info.size}*\n_Members_ : *${info.participants.filter((p) => p.admin == null).length}*\n\n_Admins_ : *${Number(info.participants.length - info.participants.filter((p) => p.admin == null).length)}*\n\n_Who can send message_ : *${info.announce == true ? 'Admins' : 'Everyone'}*\n\n_Who can edit group info_ : *${info.restrict == true ? 'Admins' : 'Everyone'}*\n\n_Who can add participants_ : *${info.memberAddMode == true ? 'Everyone' : 'Admins'}*`
         }, {quoted: m })
-
 }
 	 break;
 
@@ -4077,7 +4114,7 @@ await client.sendMessage(m.chat, { image: { url: pp },
                 if (!quoted) return reply('Reply to Sticker')
                 if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
                 
-		        let webp2mp4File = await fetch(`https://bk9.fun/converter/webpToMp4?url=${quoted}`)
+		let webp2mp4File = await fetch(`https://bk9.fun/converter/webpToMp4?url=${quoted}`)
                 let media = await client.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
                 await client.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' } }, { quoted: m })
