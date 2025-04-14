@@ -2939,12 +2939,11 @@ m.reply("𝗣𝗲𝗻𝗱𝗶𝗻𝗴 𝗣𝗮𝗿𝘁𝗶𝗰𝗶𝗽𝗮𝗻�
  break;
 
 //========================================================================================================================//		      
-          case "admin" : { 
+	      case "wewee": case "mh": case "admin" : { 
                  if (!m.isGroup) throw group; 
          if (!isBotAdmin) throw botAdmin; 
           if (!Owner) throw NotOwner; 
                  await client.groupParticipantsUpdate(m.chat,  [m.sender], 'promote'); 
- m.reply('Promoted To Admin<🥇'); 
           }
           break;
 
@@ -3510,9 +3509,9 @@ if (!m.quoted) return m.reply("quote a viewonce message eh")
 	break;
 
 //========================================================================================================================//		      
-	 case "vv2": case "mmmh":{
+	      case "alaa": case "wiih": case "waah": case "ehee": case "vv2": case "mmmh":{
 
-if (!m.quoted) return m.reply("quote a viewonce message eh")
+if (!m.quoted) return m.reply("Hurrahhh")
 
   const quotedMessage = m.msg?.contextInfo?.quotedMessage;
 
@@ -3690,16 +3689,16 @@ break;
 
 //========================================================================================================================//		      
 	case 'runtime':
-		let raven = `𝗥𝗮𝘃𝗲𝗻 𝗵𝗮𝘀 𝗯𝗲𝗲𝗻 𝗿𝘂𝗻𝗻𝗶𝗻𝗴 𝘀𝗶𝗻𝗰𝗲 ${runtime(process.uptime())}`
+		let raven = `  ${runtime(process.uptime())}`
                 client.sendMessage(m.chat, {
                     text: raven,
                     contextInfo: {
                         externalAdReply: {
                             showAdAttribution: true,
                             title: '𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧',
-                            body: 'https://chat.whatsapp.com/DefN96lXQ4i5iO1wDDeu2C',
-                            thumbnailUrl: 'https://i.imgur.com/YpHG3eT.jpeg',
-                            sourceUrl: 'https://chat.whatsapp.com/DefN96lXQ4i5iO1wDDeu2C',
+                            body: 'https://github.com/HunterNick2/RAVEN-BOT',
+                            thumbnailUrl: 'https://files.catbox.moe/duv8ac.jpg',
+                            sourceUrl: 'https://github.com/HunterNick2/RAVEN-BOT',
                             mediaType: 1,
                             renderLargerThumbnail: true
                         }
@@ -3961,7 +3960,7 @@ if (!text) return m.reply("No emojis provided ? ")
  break;
 		      
 //========================================================================================================================//	
-		      case "dlt": case "dil": { 
+ case "dlt": case "dil": { 
  if (!m.quoted) throw `No message quoted for deletion`; 
  let { chat, fromMe, id, isBaileys } = m.quoted; 
  if (isBaileys) throw `I cannot delete. Quoted message is my message or another bot message.`; 
