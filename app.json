@@ -16,7 +16,7 @@
   ],
   "website": "https://github.com/HunterNick2/RAVEN-BOT#readme",
   "repository": "https://github.com/HunterNick2/RAVEN-BOT.git",
-  "logo": "https://telegra.ph/file/eebe191a0520a79979b34.jpg",
+  "logo": "https://files.catbox.moe/duv8ac.jpg",
   "success_url": "/",
   "env": {
     "PREFIX": {
@@ -124,10 +124,12 @@
 },
  "STICKER_AUTHOR": {
       "description": "Input sticker data for author",
+      "value": "RAVEN-BOT",
       "required": false
 },
  "STICKER_PACKNAME": {
       "description": "Input sticker data for packname",
+      "value": "RAVEN-BOT",
       "required": false
 },
  "GPT_INBOX": {
