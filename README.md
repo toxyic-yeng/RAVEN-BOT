@@ -1,5 +1,5 @@
 # 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧
-<p align="center">
+<div align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=1BAFBAFF&center=true&width=910&height=100&lines=HOLLA+THIS+IS+RAVEN-BOT;MULTI+DEVICE+WHATSAPP+BOT;CODED+BY+NICK;STAR+AND+FORK+THE+REPO" alt="Typing SVG" />
   </a>
@@ -43,7 +43,7 @@ This is a highly customisable simple whatsapp bot with group management features
 
 Our AI features use random APIs to run, so sometimes they may be down.
 
-# SET-UP
+ SET-UP
 
 ## ` Fork this repo`
 <p align="centre">
