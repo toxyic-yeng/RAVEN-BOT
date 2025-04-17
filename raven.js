@@ -1,4 +1,4 @@
-
+// Copy paste 😁😁
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, getBinaryNodeChild, getBinaryNodeChildren, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const path = require('path');
@@ -17,6 +17,7 @@ const {c, cpp, node, python, java} = require('compile-run');
 const acrcloud = require("acrcloud"); 
 const ytdl = require("ytdl-core");
 const Client = new Genius.Client("TUoAEhL79JJyU-MpOsBDkFhJFWFH28nv6dgVgPA-9R1YRwLNP_zicdX2omG2qKE8gYLJat5F5VSBNLfdnlpfJg"); // Scrapes if no key is provided
+const { downloadYouTube, downloadSoundCloud, downloadSpotify, searchYouTube, searchSoundCloud, searchSpotify } = require('./action/wee');
 const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/ravenupload');
 const { Configuration, OpenAI } = require("openai");
 const { menu, autoread, mode, antidel, antitag, appname, herokuapi, gptdm, botname, antibot, prefix, author, packname, mycode, admin, botAdmin, dev, group, bad, DevRaven, NotOwner, antilink, antilinkall, wapresence, badwordkick } = require("./set.js");
@@ -423,13 +424,13 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✯│ 𝗔𝗶2
 ┃✫│ 𝗩𝗶𝘀𝗶𝗼𝗻
 ┃✫│ 𝗗𝗲𝗳𝗶𝗻𝗲
-┃✯│ 𝗗𝗮𝗿𝗸𝗴𝗽𝘁
 ┃✫│ 𝗥𝗮𝘃𝗲𝗻
 ┃✬│ 𝗚𝗲𝗺𝗶𝗻𝗶
 ┃✯│ 𝗚𝗼𝗼𝗴𝗹𝗲
 ┃✫│ 𝗚𝗽𝘁
 ┃✬│ 𝗚𝗽𝘁2
 ┃✫│ 𝗚𝗽𝘁3
+┃✯│ 𝗚𝗽𝘁4
 ╰══───────◇───────══╯
 ●════  〘 𝗚𝗥𝗢𝗨𝗣 〙═───═●
 ╭══───────◇───────══╮
@@ -636,46 +637,7 @@ break;
              reply(`I did not find any lyrics for ${text}. Try searching a different song.`); 
              console.log(error); 
          }
-        break;
-		      
-//========================================================================================================================//	      
-	case "play2": {
- const yts = require("yt-search");
-
-    try {
-        if (!text) return m.reply("What song do you want to download?");
-
-        const { videos } = await yts(text);
-        if (!videos || videos.length === 0) {
-            return m.reply("No songs found!");
-        }
-
-        const urlYt = videos[0].url;
-
-        try {
-            let data = await fetchJson(`https://api.dreaded.site/api/ytdl/audio?url=${urlYt}`);
-
-            const { title, format, url: audioUrl } = data.result;
-
-            await client.sendMessage(
-                m.chat,
-                {
-                    document: { url: audioUrl },
-                    mimetype: "audio/mpeg",
-		    caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
-                    fileName: `${title}.mp3`,
-                },
-                { quoted: m }
-            );
-        } catch (error) {
-            console.error("API request failed:", error.message);
-            m.reply("Download failed: Unable to retrieve audio.");
-        }
-    } catch (error) {
-        m.reply("Download failed\n" + error.message);
-    }
-};
-        break;
+        break;	
 		      
 //========================================================================================================================//
 	      case "song2": {
@@ -823,7 +785,7 @@ const fetch = require("node-fetch");
 //========================================================================================================================//		      
 		      case "credits": 
   
-              client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/duv8ac.jpg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Nick Hunter ➪ Kenya\n - Actively compiling and debugging parts of this bot script\nhttps://github.com/HunterNick2\n\n - Keithkeizzah (Ghost) ➪ Kenya\n - Compiling and debugging parts of this bot script\nhttps://github.com/Keithkeizzah\n\n - Fortunatus Mokaya ➪ Kenya\n - Founder of the bot Base\nhttps://github.com/Fortunatusmokaya\n\n𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧`}, { quoted: m}); 
+              client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/duv8ac.jpg' }, caption: `We express sincere gratitude and acknowledgement to the following:\n\n -Dika Ardnt ➪ Indonesia\n - Writing the base code using case method\nhttps://github.com/DikaArdnt\n\n -Adiwajshing ➪ India\n - Writing and Coding the bot's library (baileys)\nhttps://github.com/WhiskeySockets/Baileys\n\n -WAWebSockets Discord Server community\n-Maintaining and reverse engineering the Web Sockets\nhttps://discord.gg/WeJM5FP9GG\n\n - Nick Hunter ➪ Kenya\n - Actively compiling and debugging parts of this bot script\nhttps://github.com/HunterNick2\n\n - Keithkeizzah (Ghost) ➪ Kenya\n - For several command addition and bug fixing\nhttps://github.com/Keithkeizzah\n\n - Fortunatus Mokaya ➪ Kenya\n - Founder of the bot Base\nhttps://github.com/Fortunatusmokaya\n\n𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧`}, { quoted: m}); 
                
 		      break;
 
@@ -925,6 +887,49 @@ const path = require("path");
 	  break;
 
 //========================================================================================================================//		      
+ case "play2": {	      
+    if (!text)  return reply("What song do you want to download?");		      
+try {
+    let result = await searchYouTube(text);
+    let downloadResult = result ? await downloadYouTube(result.url) : null;
+    let platform = 'YouTube';
+
+    if (!downloadResult) {
+      result = await searchSpotify(text);
+      downloadResult = result ? await downloadSpotify(result.url) : null;
+      platform = 'Spotify';
+    }
+
+    if (!downloadResult) {
+      result = await searchSoundCloud(text);
+      downloadResult = result ? await downloadSoundCloud(result.url) : null;
+      platform = 'SoundCloud';
+    }
+
+    if (!result || !downloadResult) {
+      return reply("Unable to retrieve download URL from all sources!");
+    }
+
+    await client.sendMessage(m.chat, {
+      document: { url: downloadResult.downloadUrl },
+      mimetype: "audio/mp3",
+      caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
+      fileName: `${result.title.replace(/[^a-zA-Z0-9 ]/g, "")}.mp3`,
+      }, { quoted: m });
+ 
+    await client.sendMessage(m.chat, {
+      audio: { url: downloadResult.downloadUrl },
+      mimetype: "audio/mp4",
+      }, { quoted: m }); 
+
+  } catch (error) {
+    console.error('Error:', error);
+    return reply(`An error occurred: ${error.message}`);
+  }
+}
+ break;
+		      
+//========================================================================================================================//	      	      
 	      case "inspect": {
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
@@ -1558,7 +1563,7 @@ m.reply("*Wait a moment...*");
 		break;
 		      
 //========================================================================================================================//
-	      case "gpt":
+case "raven":
 		{
         if (!text) return reply(`Hello there, what's your question?`);
           let d = await fetchJson(
@@ -1574,8 +1579,41 @@ m.reply("*Wait a moment...*");
       }
                 break;
 
-//========================================================================================================================//		      
-		      case "gpt2":
+//========================================================================================================================//
+case "gpt4":
+           {
+        if (!text) return reply(`Hello there, what's your question?`);
+          let d = await fetchJson(
+            `https://bk9.fun/ai/jeeves-chat2?q=${text}`
+          );
+          if (!d.BK9) {
+            return reply(
+              "An error occurred while fetching the AI chatbot response. Please try again later."
+            );
+          } else {
+            reply(d.BK9);
+          }
+		     }
+                      break;
+
+//========================================================================================================================//
+case 'gpt3': {
+        if (!text) return reply(`Hello there, How can i help you?`);
+          let d = await fetchJson(
+            `https://bk9.fun/ai/blackbox?q=${text}`
+          );
+          if (!d.BK9) {
+            return reply(
+              "An error occurred while fetching the AI chatbot response. Please try again later."
+            );
+          } else {
+            reply(d.BK9);
+          }
+	}
+  break;
+
+//========================================================================================================================//	      		      
+case "gpt2":
 		{
         if (!text) return reply(`What's your question ?`);
           let d = await fetchJson(
@@ -1591,8 +1629,27 @@ m.reply("*Wait a moment...*");
       }
                 break;
 
-//========================================================================================================================//		      
-	      case 'trt': case 'translate':{
+//========================================================================================================================//
+case 'gpt':{
+
+if (!text) return m.reply("Hello there, what's going on ?");
+	try {
+     const data = await fetchJson(`https://api.dreaded.site/api/aichat?query=${text}`);
+		
+    if (data && data.result) {
+	    const res = data.result;
+	    await m.reply(res);
+    } else {
+	    m.reply("An error occurred!!");
+    }
+	} catch (error) {
+reply('An error occured while communicating with the APIs\n' + error);
+}
+  }
+break;
+
+//========================================================================================================================//	      		      
+ case 'trt': case 'translate':{
   	try {
         // Ensure that there is a language code and text to translate
         const args = text.split(' ');
@@ -1637,7 +1694,7 @@ m.reply("*Wait a moment...*");
     break;
 
 //========================================================================================================================//		      
-		      case 'cast': {
+ case 'cast': {
     if (!Owner) throw NotOwner;
       if (!m.isGroup) throw group;
     if (!text) return m.reply(`provide a text to cast !`);
@@ -1651,9 +1708,9 @@ m.reply("*Wait a moment...*");
       break;
 
 //========================================================================================================================//		      
-	      case "img": case "ai-img": case "image": case "images":{
+case "img": case "ai-img": case "image": case "images":{
 		      var gis = require('g-i-s');
-		      if (!text) return m.reply("Provide a text");
+ if (!text) return m.reply("Provide a text");
 
     try {
         // Use the 'text' as the search term for images
@@ -1728,23 +1785,35 @@ m.reply("*Wait a moment...*");
 	break;
 
 //========================================================================================================================//
-	      case 'dalle': case 'createimage': {
-  if (!text) return m.reply(`*This command generates images from text prompts*\n\n*𝙴xample usage*\n*${prefix + command} Beautiful anime girl*\n*${prefix + command} girl in pink dress*`);
-  try {
-  	m.reply('Please wait, i am generating your image...')
-    const endpoint = `https://www.arch2devs.ct.ws/api/fluxaws?query=${encodeURIComponent(text)}`
-    const response = await fetch(endpoint)
-    if (response.ok) {
-      const imageBuffer = await response.buffer()
-      await client.sendMessage(m.chat, { image: imageBuffer }, {quoted: m})
-    } else {
-      throw '*Aarrhhhg Image generation failed*';
+ case 'dalle': case 'createimage': {
+		      
+  if (!text) return m.reply("What image do you want to create ?");
+		      
+const apiUrl = `https://api.dreaded.site/api/imagine?text=${encodeURIComponent(text)}`;
+m.reply('*Please wait i am generating your image...*');		      
+try {
+        const data = await fetchJson(apiUrl);
+        if (!data.status || !data.result) {
+            return m.reply("Something is wrong,  Api might be down!");
+        }
+
+        const { creator, result } = data;
+        const caption = `There you go 💠`;
+
+        await client.sendMessage(
+            m.chat,
+            {
+                image: { url: result },
+                caption: caption
+            },
+            { quoted: m }
+        );
+    } catch (error) {
+        console.error(error);
+        m.reply("An error occurred while generating the image.");
     }
-  } catch {
-    m.reply('Oops! Something went wrong while generating your image. Please try again later.')
-  }
-		      }
-		 break;
+};
+break;
 		      
 //========================================================================================================================//		      
 		      case "ai": {
@@ -2207,24 +2276,6 @@ let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
 		      break;
 
 //========================================================================================================================//		      
-       case 'darkgpt':{
-
-if (!text) { return m.reply("Hey there Fuckface😈, I'm Darkgpt, I respond to anything be it harmful, I'm a pure Evil👿, What sort of dark and delightful nonsense do you want to dive into Today😈 ?");
-	   }
-	try {
-     const data = await fetchJson(`https://api.dreaded.site/api/makgpt?text=${text}`);
-		
-    if (data && data.result) {
-	    const res = data.result;
-	    await m.reply(res);
-    } else {
-	    m.reply("Huh, the silence is deafening, no response whatsoever💀.The API seems to have vanished into the abyss...😔");
-    }
-	} catch (error) {
-reply('An error occured while communicating with the APIs\n' + error);
-}
-  }
-break;
 
 //========================================================================================================================//		      
 		case 'github': {
@@ -2388,22 +2439,7 @@ const url = googleTTS.getAudioUrl(text, {
 	 break;
 
 //========================================================================================================================//		      
- case "raven":
-           {
-        if (!text) return reply(`Hello there, what's your question?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/jeeves-chat2?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-		     }
-                      break;
-
+ 
 //========================================================================================================================//		      
  case 'weather': {
 		      try {
@@ -4083,20 +4119,6 @@ case "block": {
 	break;
 
 //========================================================================================================================//		      
-        case 'gpt3': {
-        if (!text) return reply(`Hello there, How can i help you?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/blackbox?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-	}
-break;
 
 //========================================================================================================================//		      
 	      case 'gcprofile': {
@@ -4135,7 +4157,7 @@ await client.sendMessage(m.chat, { image: { url: pp },
                 if (!quoted) return reply('Reply to Sticker')
                 if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
                 
-		let webp2mp4File = await fetch(`https://bk9.fun/converter/webpToMp4?url=${quoted}`)
+		let webp2mp4File = await fetchJson(`https://bk9.fun/converter/webpToMp4?url=${quoted}`)
                 let media = await client.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
                 await client.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' } }, { quoted: m })
