@@ -3123,7 +3123,7 @@ const { igdl } = require("ruhend-scraper");
       await client.sendMessage(m.chat, {
         video: { url: videoUrl },
         mimetype: "video/mp4",
-        caption: `DOWNLOADED BY ${botname}`
+        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧"
       },{ quoted: m });
     }
   } catch (error) {
@@ -3242,7 +3242,7 @@ if (!text.includes("tiktok.com")) {
 //========================================================================================================================//
   case "pinterest": case "pin":
 	      {      
-	if (!text) return reply('Please provide the Pinterest URL to download from.');
+	if (!text) return reply('𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗽𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘁 𝗹𝗶𝗻𝗸 !');
 		      
 if (!text.includes("pin.it")) {
         return m.reply("That is not a pinterest link.");
@@ -3275,8 +3275,8 @@ if (imageUrl) {
         }
     } catch (e) {
         console.error(e);
-        await client.sendMessage(m.chat, { react: { text: '❌', key: mek.key } });
-        reply('❎ An error occurred while processing your request.');
+        await client.sendMessage(m.chat, { react: { text: '☠️', key: mek.key } });
+        reply('An error occurred while processing your request.');
     }
 }
 break;
@@ -4203,8 +4203,7 @@ await client.sendMessage(m.chat, { image: { url: pp },
                 if (!quoted) return reply('Reply to Sticker')
                 if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
                 
-		let webp2mp4File = require('./lib/ravenupload');
-                let media = await client.downloadAndSaveMediaMessage(quoted)
+        let media = await client.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
                 await client.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' } }, { quoted: m })
                 await fs.unlinkSync(media)
