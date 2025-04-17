@@ -11,7 +11,7 @@ const Genius = require("genius-lyrics");
 const yts = require("yt-search");
 const { DateTime } = require('luxon');
 const uploadtoimgur = require('./lib/imgur');
-const uploadToCatbox = require('./lib/catbox.js');
+const uploadToCatbox = require('./lib/catbox');
 const advice = require("badadvice");
 const {c, cpp, node, python, java} = require('compile-run');
 const acrcloud = require("acrcloud"); 
@@ -386,6 +386,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✫│ 𝗧𝗶𝗸𝘁𝗼𝗸
 ┃✬│ 𝗧𝘄𝗶𝘁𝘁𝗲𝗿
 ┃✫│ 𝗶𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺
+┃✬│ 𝗣𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘁
 ┃✫│ 𝗠𝗼𝘃𝗶𝗲
 ┃✬│ 𝗟𝘆𝗿𝗶𝗰𝘀
 ┃✫│ 𝗪𝗵𝗮𝘁𝘀𝗼𝗻𝗴
@@ -640,7 +641,7 @@ break;
         break;	
 		      
 //========================================================================================================================//
-	      case "song2": {
+	      case "song": {
 const yts = require("yt-search");
 const fetch = require("node-fetch"); 
 
@@ -689,6 +690,43 @@ await client.sendMessage(
   }
 }
 	break;
+
+//========================================================================================================================//	      		      
+  case "song2": {
+const yts = require("yt-search");
+
+    try {
+        if (!text) return m.reply("What song do you want to download?");
+
+        const { videos } = await yts(text);
+        if (!videos || videos.length === 0) return m.reply("No songs found!");
+	    
+await m.reply(`_Please wait your download is in progress_`);
+	    
+        const urlYt = videos[0].url;
+        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/audio?url=${urlYt}`);
+
+        if (!data || !data.result || !data.result.url) {
+            return m.reply("Failed to fetch audio from the API.");
+        }
+
+const audioUrl = data.result.url;
+const title = data.result.title;
+
+        await client.sendMessage(
+            m.chat,
+            {
+                audio: { url: audioUrl },
+                mimetype: "audio/mpeg",
+                fileName: `${title}.mp3`,
+            },
+            { quoted: m }
+        );
+    } catch (error) {
+        m.reply("Download failed\n" + error.message);
+    }
+}
+ break;
 		      
 //========================================================================================================================//
 	      case 'video': {
@@ -3165,7 +3203,10 @@ break;
 if (!text) {
     return m.reply('Please provide a TikTok video link.');
   }
-
+	      
+if (!text.includes("tiktok.com")) {
+        return m.reply("That is not a TikTok link.");
+}
   try {
     const response = await axios.get(`https://bk9.fun/download/tiktok?url=${encodeURIComponent(text)}`);
 
@@ -3198,48 +3239,53 @@ if (!text) {
 }
   break;
 
-//========================================================================================================================//		      
-	  case "song": {
-		      const yts = require("yt-search");
+//========================================================================================================================//
+  case "pinterest": case "pin":
+	      {      
+	if (!text) return reply('Please provide the Pinterest URL to download from.');
+		      
+if (!text.includes("pin.it")) {
+        return m.reply("That is not a pinterest link.");
+    }		      
+try {
+        const pinterestUrl = text;
+        const response = await axios.get(`https://bk9.fun/download/pinterest?url=${encodeURIComponent(pinterestUrl)}`);
 
-    try {
-        if (!text) return m.reply("What song do you want to download?");
-
-        const { videos } = await yts(text);
-        if (!videos || videos.length === 0) return m.reply("No songs found!");
-	    
-await m.reply(`_Please wait your download is in progress_`);
-	    
-        const urlYt = videos[0].url;
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/audio?url=${urlYt}`);
-
-        if (!data || !data.result || !data.result.url) {
-            return m.reply("Failed to fetch audio from the API.");
+        if (!response.data.status) {
+            return reply('Unable to fetch pinterest data.');
         }
 
-        const audioUrl = data.result.url;
-const title = data.result.title;
+        const media = response.data.BK9;
+        const capp = `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧`;
 
-        await client.sendMessage(
-            m.chat,
-            {
-                audio: { url: audioUrl },
-                mimetype: "audio/mpeg",
-                fileName: `${title}.mp3`,
-            },
-            { quoted: m }
-        );
-    } catch (error) {
-        m.reply("Download failed\n" + error.message);
+if (media.length > 0) {
+            const videoUrl = media.find(item => item.url.includes('.mp4'))?.url;
+            const imageUrl = media.find(item => item.url.includes('.jpg'))?.url;
+
+if (videoUrl) {
+                await client.sendMessage(m.chat, { video: { url: videoUrl }, caption: capp }, { quoted: m });
+            } else 
+if (imageUrl) {
+                await client.sendMessage(m.chat, { image: { url: imageUrl }, caption: capp }, { quoted: m });
+            } else {
+                reply('No Video found!');
+            }
+        } else {
+            reply('No Image found.');
+        }
+    } catch (e) {
+        console.error(e);
+        await client.sendMessage(m.chat, { react: { text: '❌', key: mek.key } });
+        reply('❎ An error occurred while processing your request.');
     }
 }
-		      break;
+break;
 
 //========================================================================================================================//		      
  case 'sc': case 'script': case 'repo':
 
  client.sendMessage(m.chat, { image: { url: `https://telegra.ph/file/416c3ae0cfe59be8db011.jpg` }, caption: 
-` Hello👋 *${pushname}*,You can deploy 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧 using the GitHub link below 𓅂\n\nFork and give us a star✨.\n\n https://github.com/HunterNick2/RAVEN-BOT\n\nLink with your whatsapp using pairing link below\n\nhttps://pairing-raven.onrender.com\n\nCopy the session_id and Fill in the required Variables before Deploy\n\nEnjoy and have fun with ░𝗥𝗔𝗩𝗘𝗡 𝗕𝗢𝗧░\n\n𝗠𝗮𝗱𝗲 𝗼𝗻 𝗲𝗮𝗿𝘁𝗵 𝗯𝘆 𝗛𝘂𝗺𝗮𝗻𝘀!`},{quoted : m });
+` Hello👋 *${pushname}*,You can deploy 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧 using the GitHub link below 𓅂\n\nFork and give us a star✨.\n\n https://github.com/HunterNick2/RAVEN-BOT\n\nLink with your whatsapp using pairing link below\n\nhttps://pairing-raven.onrender.com\n\nCopy the session_id and paste it on the SESSION string, Fill in the other required Variables before Deploy\n\nEnjoy and have fun with ░𝗥𝗔𝗩𝗘𝗡 𝗕𝗢𝗧░\n\n𝗠𝗮𝗱𝗲 𝗼𝗻 𝗲𝗮𝗿𝘁𝗵 𝗯𝘆 𝗛𝘂𝗺𝗮𝗻𝘀!`},{quoted : m });
 
    break;
                                                   
@@ -4157,7 +4203,7 @@ await client.sendMessage(m.chat, { image: { url: pp },
                 if (!quoted) return reply('Reply to Sticker')
                 if (!/webp/.test(mime)) return reply(`reply sticker with caption *${prefix + command}*`)
                 
-		let webp2mp4File = await fetchJson(`https://bk9.fun/converter/webpToMp4?url=${quoted}`)
+		let webp2mp4File = require('./lib/ravenupload');
                 let media = await client.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
                 await client.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' } }, { quoted: m })
