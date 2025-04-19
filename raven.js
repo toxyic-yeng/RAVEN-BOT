@@ -378,7 +378,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✫│ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()} on ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}
 ┃✫│ 𝗥𝗔𝗠 𝗨𝘀𝗮𝗴𝗲 : ${ram()}
 ┃✫│═════════════════════
-┃✫│ █■█■█■█■█■█■█■█■█■█
+┃✫│  █■█■█■█■█■█■█■█■█■█
 ┃✫│═════════════════════
 ╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
 ●════   〘 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 〙 ══● 
@@ -678,7 +678,7 @@ try {
             reply(
                 `*Hello there, below is what you requested*\n\n` +
                 `📖 *Reference:* ${ref}\n` +
-                `📚 *Verse:* ${text}\n\n` +
+                ` ${text}\n\n` +
 		`_Requested by ${pushname}_`    
             );
         } else {
@@ -3522,7 +3522,7 @@ break;
         message += typeof pl === 'string' ? `🇬🇧 Premier League:\n${pl}\n\n` : pl.length > 0 ? `🇬🇧 Premier League:\n${pl.map(match => {
             const { game, date, time } = match;
             return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
-        }).join('\n')}\n\n` : "🇬🇧 Premier League: No matches scheduled\n\n";
+        }).join('\n')}\n\n` : "🇬🇧 𝗣𝗿𝗲𝗺𝗶𝗲𝗿 𝗟𝗲𝗮𝗴𝘂𝗲: No matches scheduled\n\n";
 
         if (typeof laliga === 'string') {
             message += `🇪🇸 La Liga:\n${laliga}\n\n`;
@@ -3530,25 +3530,25 @@ break;
             message += laliga.length > 0 ? `🇪🇸 La Liga:\n${laliga.map(match => {
                 const { game, date, time } = match;
                 return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
-            }).join('\n')}\n\n` : "🇪🇸 La Liga: No matches scheduled\n\n";
+            }).join('\n')}\n\n` : "🇪🇸 𝗟𝗮 𝗟𝗶𝗴𝗮: No matches scheduled\n\n";
         }
 
         message += typeof bundesliga === 'string' ? `🇩🇪 Bundesliga:\n${bundesliga}\n\n` : bundesliga.length > 0 ? `🇩🇪 Bundesliga:\n${bundesliga.map(match => {
             const { game, date, time } = match;
             return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
-        }).join('\n')}\n\n` : "🇩🇪 Bundesliga: No matches scheduled\n\n";
+        }).join('\n')}\n\n` : "🇩🇪 𝗕𝘂𝗻𝗱𝗲𝘀𝗹𝗶𝗴𝗮: No matches scheduled\n\n";
 
         message += typeof serieA === 'string' ? `🇮🇹 Serie A:\n${serieA}\n\n` : serieA.length > 0 ? `🇮🇹 Serie A:\n${serieA.map(match => {
             const { game, date, time } = match;
             return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
-        }).join('\n')}\n\n` : "🇮🇹 Serie A: No matches scheduled\n\n";
+        }).join('\n')}\n\n` : "🇮🇹 𝗦𝗲𝗿𝗶𝗲 𝗔: No matches scheduled\n\n";
 
         message += typeof ligue1 === 'string' ? `🇫🇷 Ligue 1:\n${ligue1}\n\n` : ligue1.length > 0 ? `🇫🇷 Ligue 1:\n${ligue1.map(match => {
             const { game, date, time } = match;
             return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
-        }).join('\n')}\n\n` : "🇫🇷 Ligue 1: No matches scheduled\n\n";
+        }).join('\n')}\n\n` : "🇫🇷 𝗟𝗶𝗴𝘂𝗲- 1: No matches scheduled\n\n";
 
-        message += "Times and dates are in East African Timezone (EAT).";
+        message += "𝗧𝗶𝗺𝗲 𝗮𝗻𝗱 𝗗𝗮𝘁𝗲 𝗮𝗿𝗲 𝗶𝗻 𝗘𝗮𝘀𝘁 𝗔𝗳𝗿𝗶𝗰𝗮 𝗧𝗶𝗺𝗲𝘇𝗼𝗻𝗲 (𝗘𝗔𝗧).";
 
         await m.reply(message);
     } catch (error) {
