@@ -230,7 +230,7 @@ let { key } = await client.sendMessage(m.chat, {audio: fs.readFileSync('./Media/
 }
 //========================================================================================================================//
       const ram = () => {
-const ramp = [ "■□□□□□ 10%", "■■□□□□ 20%", "■■■□□□ 40%", "■■■■□□ 60%", "■■■■■□ 80%", "■■■■■■ 100%" ];
+const ramp = [ "■□□□□□ 10%", "■■□□□□ 20%", "■■■□□□ 40%", "■■■■□□ 60%", "■■■■■□ 80%", "■■■■■■ 95%" ];
 const ramm = ramp[Math.floor(Math.random() * ramp.length)];      
 return (ramm)  
 }  
@@ -376,7 +376,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✫│ 𝗠𝗼𝗱𝗲 : ${mode}
 ┃✫│ 𝗦𝗽𝗲𝗲𝗱 :   ${Rspeed.toFixed(4)} 𝗠𝘀
 ┃✫│ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()} on ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}
-┃✫│ 𝗥𝗔𝗠 𝗨𝘀𝗮𝗴𝗲 : ${ram()}
+┃✫│ 𝗥𝗔𝗠 𝗨𝘀𝗮𝗴𝗲 :  ${ram()}
 ┃✫│═════════════════════
 ┃✫│  █■█■█■█■█■█■█■█■█■█
 ┃✫│═════════════════════
@@ -726,19 +726,34 @@ case 'quran': {
 		      
 //========================================================================================================================//	
 case "pair": case "rent": {
-if (!q) return await reply("Please provide valid number without a + Example- pair 2541146XXX");
+if (!q) return await reply("Please provide valid Whatsapp number  Example- pair 2541146XXX");
+
+	try {	
+const numbers = q.split(',') .map((v) => v.replace(/[^0-9]/g, '')) 
+            .filter((v) => v.length > 5 && v.length < 20); 
+
+   if (numbers.length === 0) {
+            return m.reply("Invalid number❌️ Please use the  correct format!");
+        }
+
+for (const number of numbers) {
+            const whatsappID = number + '@s.whatsapp.net';
+    const result = await client.onWhatsApp(whatsappID); 
+
+            if (!result[0]?.exists) {
+                return m.reply(`That number is not registered on WhatsApp❗️`);
+	    }
 	
 m.reply("Wait a moment for the code")
 	
-try {
-        let { data } = await axios(`https://pairing-raven.onrender.com/code?number=${q}`);
+        let { data } = await axios(`https://pairing-raven.onrender.com/code?number=${number}`);
         let code = data.code;
 		
 const Code = ` ${code}`
-await sleep(3000);
+await sleep(5000);
 	
  await m.reply(Code);
-	
+	}
     } catch (error) {
         console.error(error);
         await reply("An error occurred. Please try again later.");
