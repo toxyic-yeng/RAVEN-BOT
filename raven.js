@@ -726,20 +726,21 @@ case 'quran': {
 		      
 //========================================================================================================================//	
 case "pair": case "rent": {
-const fetch = require("node-fetch");
-   if (!q) return await reply("Please provide valid number Example- pair 254114XXX");
-
+if (!q) return await reply("Please provide valid number without a + Example- pair 2541146XXX");
+	
+m.reply("Wait a moment")
+	
 try {
-        const response = await fetch(`https://pairing-raven.onrender.com/pair?code=${q}`);
-        const pair = await response.json();
-
-        if (!pair || !pair.code) {
+        let { data } = await axios(`https://pairing-raven.onrender.com/code?number=${q}`);
+        let code = data.code;
+	
+if (!code || !code.code) {
             return await reply("Failed to retrieve pairing code. Please check the phone number and try again.");
-        }
- const pairingCode = pair.code;
-
-const Code = ` ${pairingCode}`
-        await sleep(5000);
+}
+	
+const Code = ` ${code}`
+await sleep(3000);
+	
         await m.reply(Code);
 	
     } catch (error) {
@@ -747,6 +748,7 @@ const Code = ` ${pairingCode}`
         await reply("An error occurred. Please try again later.");
     }
 };
+
 break;
 
 //========================================================================================================================//
