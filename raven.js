@@ -3222,7 +3222,7 @@ const { igdl } = require("ruhend-scraper");
   }
 
 await client.sendMessage(m.chat, {
-      react: { text: '⏳', key: m.key }
+      react: { text: '🔄', key: m.key }
     });
 
 
@@ -3261,7 +3261,7 @@ if (!text.includes('x.com')) {
 }
 	  
 await client.sendMessage(m.chat, {
-      react: { text: '⏳', key: m.key }
+      react: { text: '🔄', key: m.key }
     });
 		      
 try {
@@ -3272,10 +3272,10 @@ try {
       return reply("Failed to retrieve Twitter video. Please check the link and try again.");
     }
 
-    const { nicole } = data.result;
+    const { video_hd } = data.result;
 
 	await client.sendMessage(m.chat, {
-              video: { url: nicole },
+              video: { url: video_hd },
               caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧"
             }, { quoted: m });
 
@@ -3297,7 +3297,7 @@ if (!text) {
     }
 
 await client.sendMessage(m.chat, {
-                       react: { text: '⏳', key: m.key }
+                       react: { text: '🔄', key: m.key }
                       });
     try {
                 let data = await fetchJson(`https://api.dreaded.site/api/facebook?url=${text}`);
@@ -3339,7 +3339,7 @@ if (!text.includes("tiktok.com")) {
         return m.reply("That is not a TikTok link.");
 }
 await client.sendMessage(m.chat, {
-      react: { text: '⏳', key: m.key }
+      react: { text: '🔄', key: m.key }
     });
 
  try {
@@ -3383,7 +3383,7 @@ if (!text.includes("pin.it")) {
         return m.reply("That is not a pinterest link.");
     }	
 await client.sendMessage(m.chat, {
-      react: { text: '⏳', key: m.key }
+      react: { text: '🔄', key: m.key }
     });
  
 try {
@@ -3519,31 +3519,31 @@ break;
 
         let message = `𝗧𝗼𝗱𝗮𝘆𝘀 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗙𝗶𝘅𝘁𝘂𝗿𝗲𝘀 ⚽\n\n`;
 
-        message += typeof pl === 'string' ? `🇬🇧 Premier League:\n${pl}\n\n` : pl.length > 0 ? `🇬🇧 Premier League:\n${pl.map(match => {
+        message += typeof pl === 'string' ? `🇬🇧 𝗣𝗿𝗲𝗺𝗶𝗲𝗿 𝗟𝗲𝗮𝗴𝘂𝗲:\n${pl}\n\n` : pl.length > 0 ? `🇬🇧 𝗣𝗿𝗲𝗺𝗶𝗲𝗿 𝗟𝗲𝗮𝗴𝘂𝗲:\n${pl.map(match => {
             const { game, date, time } = match;
             return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
         }).join('\n')}\n\n` : "🇬🇧 𝗣𝗿𝗲𝗺𝗶𝗲𝗿 𝗟𝗲𝗮𝗴𝘂𝗲: No matches scheduled\n\n";
 
         if (typeof laliga === 'string') {
-            message += `🇪🇸 La Liga:\n${laliga}\n\n`;
+            message += `🇪🇸 𝗟𝗮 𝗟𝗶𝗴𝗮:\n${laliga}\n\n`;
         } else {
-            message += laliga.length > 0 ? `🇪🇸 La Liga:\n${laliga.map(match => {
+            message += laliga.length > 0 ? `🇪🇸 𝗟𝗮 𝗟𝗶𝗴𝗮:\n${laliga.map(match => {
                 const { game, date, time } = match;
                 return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
             }).join('\n')}\n\n` : "🇪🇸 𝗟𝗮 𝗟𝗶𝗴𝗮: No matches scheduled\n\n";
         }
 
-        message += typeof bundesliga === 'string' ? `🇩🇪 Bundesliga:\n${bundesliga}\n\n` : bundesliga.length > 0 ? `🇩🇪 Bundesliga:\n${bundesliga.map(match => {
+        message += typeof bundesliga === 'string' ? `🇩🇪 𝗕𝘂𝗻𝗱𝗲𝘀𝗹𝗶𝗴𝗮:\n${bundesliga}\n\n` : bundesliga.length > 0 ? `🇩🇪 𝗕𝘂𝗻𝗱𝗲𝘀𝗹𝗶𝗴𝗮:\n${bundesliga.map(match => {
             const { game, date, time } = match;
             return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
         }).join('\n')}\n\n` : "🇩🇪 𝗕𝘂𝗻𝗱𝗲𝘀𝗹𝗶𝗴𝗮: No matches scheduled\n\n";
 
-        message += typeof serieA === 'string' ? `🇮🇹 Serie A:\n${serieA}\n\n` : serieA.length > 0 ? `🇮🇹 Serie A:\n${serieA.map(match => {
+        message += typeof serieA === 'string' ? `🇮🇹 𝗦𝗲𝗿𝗶𝗲 𝗔:\n${serieA}\n\n` : serieA.length > 0 ? `🇮🇹 𝗦𝗲𝗿𝗶𝗲 𝗔:\n${serieA.map(match => {
             const { game, date, time } = match;
             return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
         }).join('\n')}\n\n` : "🇮🇹 𝗦𝗲𝗿𝗶𝗲 𝗔: No matches scheduled\n\n";
 
-        message += typeof ligue1 === 'string' ? `🇫🇷 Ligue 1:\n${ligue1}\n\n` : ligue1.length > 0 ? `🇫🇷 Ligue 1:\n${ligue1.map(match => {
+        message += typeof ligue1 === 'string' ? `🇫🇷 𝗟𝗶𝗴𝘂𝗲 1:\n${ligue1}\n\n` : ligue1.length > 0 ? `🇫🇷 𝗟𝗶𝗴𝘂𝗲 1:\n${ligue1.map(match => {
             const { game, date, time } = match;
             return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
         }).join('\n')}\n\n` : "🇫🇷 𝗟𝗶𝗴𝘂𝗲- 1: No matches scheduled\n\n";
@@ -3560,8 +3560,7 @@ break;
 //========================================================================================================================//		      
  case 'sc': case 'script': case 'repo':
 
- client.sendMessage(m.chat, { image: { url: `https://telegra.ph/file/416c3ae0cfe59be8db011.jpg` }, caption: 
-` Hello👋 *${pushname}*,You can deploy 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧 using the GitHub link below 𓅂\n\nFork and give us a star✨.\n\n https://github.com/HunterNick2/RAVEN-BOT\n\nLink with your whatsapp using pairing link below\n\nhttps://pairing-raven.onrender.com\n\nCopy the session_id and paste it on the SESSION string, Fill in the other required Variables before Deploy\n\nEnjoy and have fun with ░𝗥𝗔𝗩𝗘𝗡 𝗕𝗢𝗧░\n\n𝗠𝗮𝗱𝗲 𝗼𝗻 𝗲𝗮𝗿𝘁𝗵 𝗯𝘆 𝗛𝘂𝗺𝗮𝗻𝘀!`},{quoted : m });
+ client.sendMessage(m.chat, { image: { url: `https://telegra.ph/file/416c3ae0cfe59be8db011.jpg` }, caption: ` Hello👋 *${pushname}*, 𝗕𝗲𝗹𝗼𝘄 𝗶𝘀 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧 𝗴𝗶𝘁𝗵𝘂𝗯 𝗿𝗲𝗽𝗼𓅂\n\nFork and maybe give us a star🌟.\n\n https://github.com/HunterNick2/RAVEN-BOT\n\nLink with your whatsapp using pairing link below\n\nhttps://pairing-raven.onrender.com\n\nCopy the session and paste it on the SESSION string, Fill in the other required Variables before Deploy\n\nEnjoy and have fun with the Bot\n\n𝗠𝗮𝗱𝗲 𝗼𝗻 𝗲𝗮𝗿𝘁𝗵 𝗯𝘆 𝗛𝘂𝗺𝗮𝗻𝘀 !`},{quoted : m });
 
    break;
                                                   
