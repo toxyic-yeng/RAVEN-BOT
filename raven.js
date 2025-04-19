@@ -728,27 +728,22 @@ case 'quran': {
 case "pair": case "rent": {
 if (!q) return await reply("Please provide valid number without a + Example- pair 2541146XXX");
 	
-m.reply("Wait a moment")
+m.reply("Wait a moment for the code")
 	
 try {
         let { data } = await axios(`https://pairing-raven.onrender.com/code?number=${q}`);
         let code = data.code;
-	
-if (!code || !code.code) {
-            return await reply("Failed to retrieve pairing code. Please check the phone number and try again.");
-}
-	
+		
 const Code = ` ${code}`
 await sleep(3000);
 	
-        await m.reply(Code);
+ await m.reply(Code);
 	
     } catch (error) {
         console.error(error);
         await reply("An error occurred. Please try again later.");
     }
 };
-
 break;
 
 //========================================================================================================================//
