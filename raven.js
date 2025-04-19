@@ -20,7 +20,7 @@ const Client = new Genius.Client("TUoAEhL79JJyU-MpOsBDkFhJFWFH28nv6dgVgPA-9R1YRw
 const { downloadYouTube, downloadSoundCloud, downloadSpotify, searchYouTube, searchSoundCloud, searchSpotify } = require('./action/wee');
 const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/ravenupload');
 const { Configuration, OpenAI } = require("openai");
-const { menu, autoread, mode, antidel, antitag, appname, herokuapi, gptdm, botname, antibot, prefix, author, packname, mycode, admin, botAdmin, dev, group, bad, DevRaven, NotOwner, antilink, antilinkall, wapresence, badwordkick } = require("./set.js");
+const { menu, menulink, autoread, mode, antidel, antitag, appname, herokuapi, gptdm, botname, antibot, prefix, author, packname, mycode, admin, botAdmin, dev, group, bad, DevRaven, NotOwner, antilink, antilinkall, wapresence, badwordkick } = require("./set.js");
 const { smsg, runtime, fetchUrl, isUrl, processTime, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/ravenfunc');
 const { exec, spawn, execSync } = require("child_process");
 module.exports = raven = async (client, m, chatUpdate, store) => {
@@ -228,6 +228,12 @@ async function mp3d () {
 let { key } = await client.sendMessage(m.chat, {audio: fs.readFileSync('./Media/menu.mp3'), mimetype:'audio/mp4', ptt: true}, {quoted: m })
 
 }
+//========================================================================================================================//
+      const ram = () => {
+const ramp = [ "■□□□□□ 10%", "■■□□□□ 20%", "■■■□□□ 40%", "■■■■□□ 60%", "■■■■■□ 80%", "■■■■■■ 100%" ];
+const ramm = ramp[Math.floor(Math.random() * ramp.length)];      
+return (ramm)  
+}  
 //========================================================================================================================// 
     if (gptdm === 'TRUE' && m.chat.endsWith("@s.whatsapp.net")) {
 	    
@@ -363,219 +369,233 @@ if (antilinkall === 'TRUE' && body.includes('https://') && !Owner && isBotAdmin 
         case "menu":
 		      await mp3d ()
 		      
-let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭═════〘 𝗥𝗔𝗩𝗘𝗡  𝗕𝗢𝗧 〙═════╮
-┃✫╭═─────────────────═╮
-┃✬│ 𝗨𝘀𝗲𝗿 : ${m.pushName}
+let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══════〘 𝗥𝗔𝗩𝗘𝗡  𝗕𝗢𝗧 〙══════╮
+┃✫╭═⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊
+┃✫│ 𝗨𝘀𝗲𝗿 : ${m.pushName}
 ┃✫│ 𝗣𝗿𝗲𝗳𝗶𝘅 : ${prefix}
 ┃✫│ 𝗠𝗼𝗱𝗲 : ${mode}
-┃✯│ 𝗦𝗽𝗲𝗲𝗱 :   ${Rspeed.toFixed(4)} 𝗠𝘀
-┃✬│ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()} on ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}
-┃✫│ 𝗔𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗥𝗔𝗠 : 32𝗚𝗕 𝗼𝗳 64𝗚𝗕
+┃✫│ 𝗦𝗽𝗲𝗲𝗱 :   ${Rspeed.toFixed(4)} 𝗠𝘀
+┃✫│ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()} on ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}
+┃✫│ 𝗥𝗔𝗠 𝗨𝘀𝗮𝗴𝗲 : ${ram()}
 ┃✫│═════════════════════
-┃✬│█▀██████▀█▀██▀███▄█▀█
+┃✫│ █■█■█■█■█■█■█■█■█■█
 ┃✫│═════════════════════
-╰══──────────────────══╯
-●════ 〘 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 〙═──═●
-╭══───────◇───────══╮
-┃✬│ 𝗩𝗶𝗱𝗲𝗼
-┃✫│ 𝗣𝗹𝗮𝘆
-┃✬│ 𝗣𝗹𝗮𝘆2
-┃✫│ 𝗦𝗼𝗻𝗴
-┃✫│ 𝗦𝗼𝗻𝗴2
-┃✬│ 𝗙𝗯𝗱𝗹
-┃✫│ 𝗧𝗶𝗸𝘁𝗼𝗸
-┃✬│ 𝗧𝘄𝗶𝘁𝘁𝗲𝗿
-┃✫│ 𝗶𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺
-┃✬│ 𝗣𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘁
-┃✫│ 𝗠𝗼𝘃𝗶𝗲
-┃✬│ 𝗟𝘆𝗿𝗶𝗰𝘀
-┃✫│ 𝗪𝗵𝗮𝘁𝘀𝗼𝗻𝗴
-┃✬│ 𝗬𝘁𝘀
-┃✫│ 𝗬𝘁𝗺𝗽3
-┃✬│ 𝗬𝘁𝗺𝗽4
-╰══───────◇───────══╯
-●═════  〘 𝗘𝗗𝗜𝗧 〙══───═●
-╭══───────◇───────══╮
-┃✫│ 𝗦𝘁𝗶𝗰𝗸𝗲𝗿
-┃✬│ 𝗦𝗺𝗲𝗺𝗲
-┃✫│ 𝗣𝗵𝗼𝘁𝗼
-┃✫│ 𝗠𝗽4
-┃✬│ 𝗥𝗲𝘁𝗿𝗶𝗲𝘃𝗲
-┃✫│ 𝗩𝘃
-┃✫│ 𝗩𝘃2
-┃✬│ 𝗦𝗰𝗿𝗲𝗲𝗻𝘀𝗵𝗼𝘁
-┃✫│ 𝗠𝗶𝘅
-┃✬│ 𝗧𝗮𝗸𝗲
-┃✫│ 𝗧𝘄𝗲𝗲𝘁
-┃✫│ 𝗤𝘂𝗼𝘁𝗲𝗹𝘆
-╰══───────◇───────══╯
-●═══〘 𝗖𝗢𝗡𝗙𝗜𝗚 𝗩𝗔𝗥𝗦 〙═───═●
-╭══───────◇───────══╮
-┃✯│ 𝗔𝗻𝘁𝗶𝗱𝗲𝗹𝗲𝘁𝗲
-┃✫│ 𝗔𝗻𝘁𝗶𝗰𝗮𝗹𝗹
-┃✯│ 𝗔𝗻𝘁𝗶𝗳𝗼𝗿𝗲𝗶𝗴𝗻
-┃✫│ 𝗔𝗻𝘁𝗶𝘁𝗮𝗴
-┃✯│ 𝗔𝗻𝘁𝗶𝗹𝗶𝗻𝗸
-┃✯│ 𝗔𝗻𝘁𝗶𝗹𝗶𝗻𝗸_𝗮𝗹𝗹
-┃✯│ 𝗚𝗽𝘁_𝗜𝗻𝗯𝗼𝘅
-╰══───────◇───────══╯
-●═════  〘 𝗚𝗣𝗧 〙═────═●
-╭══───────◇───────══╮
-┃✬│ 𝗔𝗶
-┃✯│ 𝗔𝗶2
-┃✫│ 𝗩𝗶𝘀𝗶𝗼𝗻
-┃✫│ 𝗗𝗲𝗳𝗶𝗻𝗲
-┃✫│ 𝗥𝗮𝘃𝗲𝗻
-┃✬│ 𝗚𝗲𝗺𝗶𝗻𝗶
-┃✯│ 𝗚𝗼𝗼𝗴𝗹𝗲
-┃✫│ 𝗚𝗽𝘁
-┃✬│ 𝗚𝗽𝘁2
-┃✫│ 𝗚𝗽𝘁3
-┃✯│ 𝗚𝗽𝘁4
-╰══───────◇───────══╯
-●════  〘 𝗚𝗥𝗢𝗨𝗣 〙═───═●
-╭══───────◇───────══╮
-┃✫│ 𝗔𝗽𝗽𝗿𝗼𝘃𝗲
-┃✯│ 𝗥𝗲𝗷𝗲𝗰𝘁
-┃✫│ 𝗣𝗿𝗼𝗺𝗼𝘁𝗲
-┃✬│ 𝗗𝗲𝗺𝗼𝘁𝗲
-┃✫│ 𝗗𝗲𝗹𝗲𝘁𝗲
-┃✬│ 𝗥𝗲𝗺𝗼𝘃𝗲
-┃✫│ 𝗙𝗮𝗸𝗲𝗿
-┃✯│ 𝗙𝗼𝗿𝗲𝗶𝗴𝗻𝗲𝗿𝘀
-┃✬│ 𝗖𝗹𝗼𝘀𝗲
-┃✫│ 𝗢𝗽𝗲𝗻
-┃✬│ 𝗖𝗹𝗼𝘀𝗲𝗧𝗶𝗺𝗲
-┃✫│ 𝗢𝗽𝗲𝗻𝗧𝗶𝗺𝗲
-┃✬│ 𝗗𝗶𝘀𝗽-𝗼𝗳𝗳
-┃✫│ 𝗗𝗶𝘀𝗽-1
-┃✬│ 𝗗𝗶𝘀𝗽-7
-┃✫│ 𝗗𝗶𝘀𝗽-90
-┃✬│ 𝗜𝗰𝗼𝗻
-┃✯│ 𝗚𝗰𝗽𝗿𝗼𝗳𝗶𝗹𝗲
-┃✫│ 𝗦𝘂𝗯𝗷𝗲𝗰𝘁
-┃✬│ 𝗗𝗲𝘀𝗰
-┃✫│ 𝗟𝗲𝗮𝘃𝗲
-┃✯│ 𝗔𝗱𝗱
-┃✫│ 𝗧𝗮𝗴𝗮𝗹𝗹
-┃✬│ 𝗛𝗶𝗱𝗲𝘁𝗮𝗴
-┃✫│ 𝗥𝗲𝘃𝗼𝗸𝗲
-┃✬│ 𝗠𝘂𝘁𝗲
-┃✫│ 𝗨𝗻𝗺𝘂𝘁𝗲
-╰══───────◇───────══╯
-●═══  〘 𝗖𝗢𝗗𝗜𝗡𝗚 〙 ═───═●
-╭══───────◇───────══╮
-┃✫│ 𝗖𝗮𝗿𝗯𝗼𝗻
-┃✯│ 𝗖𝗼𝗺𝗽𝗶𝗹𝗲-𝗰
-┃✫│ 𝗖𝗼𝗺𝗽𝗶𝗹𝗲-𝗰++
-┃✯│ 𝗖𝗼𝗺𝗽𝗶𝗹𝗲-𝗷𝘀
-┃✫│ 𝗖𝗼𝗺𝗽𝗶𝗹𝗲-𝗽𝘆
-┃✫│ 𝗜𝗻𝘀𝗽𝗲𝗰𝘁
-┃✯│ 𝗘𝗻𝗰𝗿𝘆𝗽𝘁𝗲
-┃✫│ 𝗘𝘃𝗮𝗹
-╰══───────◇───────══╯
-●═══  〘 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 〙 ═───═●
-╭══───────◇───────══╮
-┃✬│ 𝗢𝘄𝗻𝗲𝗿
-┃✬│ 𝗦𝗰𝗿𝗶𝗽𝘁
-┃✫│ 𝗠𝗲𝗻𝘂
-┃✬│ 𝗟𝗶𝘀𝘁
-┃✫│ 𝗣𝗶𝗻𝗴
-┃✯│ 𝗣𝗼𝗹𝗹
-┃✬│ 𝗔𝗹𝗶𝘃𝗲
-┃✫│ 𝗦𝗽𝗲𝗲𝗱
-┃✬│ 𝗥𝗲𝗽𝗼
-┃✫│ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲
-┃✯│ 𝗨𝗽𝘁𝗶𝗺𝗲
-┃✫│ 𝗗𝗽
-┃✯│ 𝗗𝗹𝘁
-┃✬│ 𝗠𝗮𝗶𝗹
-┃✫│ 𝗜𝗻𝗯𝗼𝘅
-┃✯│ 𝗡𝗲𝘄𝘀
-┃✫│ 𝗔𝗻𝗶𝗺𝗲
-╰══───────◇───────══╯
-●═══   〘 𝗢𝗪𝗡𝗘𝗥  〙═───═●
-╭══───────◇───────══╮
-┃✬│ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁
-┃✫│ 𝗔𝗱𝗺𝗶𝗻
-┃✯│ 𝗖𝗮𝘀𝘁
-┃✬│ 𝗕𝗿𝗼𝗮𝗱𝗰𝗮𝘀𝘁
-┃✫│ 𝗝𝗼𝗶𝗻
-┃✯│ 𝗚𝗲𝘁𝘃𝗮𝗿
-┃✯│ 𝗥𝗲𝗱𝗲𝗽𝗹𝗼𝘆
-┃✯│ 𝗨𝗽𝗱𝗮𝘁𝗲
-┃✫│ 𝗦𝗲𝘁𝘃𝗮𝗿
-┃✬│ 𝗕𝗼𝘁𝗽𝗽
-┃✫│ 𝗙𝘂𝗹𝗹𝗽𝗽
-┃✬│ 𝗕𝗹𝗼𝗰𝗸
-┃✫│ 𝗨𝗻𝗯𝗼𝗰𝗸
-┃✬│ 𝗞𝗶𝗹𝗹
-┃✫│ 𝗞𝗶𝗹𝗹2
-┃✫│ 𝗦𝗮𝘃𝗲
-┃✬│ >
-╰══───────◇───────══╯
-●═══   〘 𝗣𝗥𝗔𝗡𝗞  〙 ═──═●
-╭══───────◇───────══╮
-┃✯│ 𝗛𝗮𝗰𝗸
-╰══───────◇───────══╯
-●═══   〘 𝗟𝗢𝗚𝗢𝗦  〙 ═──═●
-╭══───────◇───────══╮
-┃✯│ 𝗛𝗮𝗰𝗸𝗲𝗿
-┃✫│ 𝗛𝗮𝗰𝗸𝗲𝗿2
-┃✯│ 𝗚𝗿𝗮𝗳𝗳𝗶𝘁𝗶
-┃✫│ 𝗖𝗮𝘁
-┃✯│ 𝗦𝗮𝗻𝗱
-┃✫│ 𝗚𝗼𝗹𝗱
-┃✯│ 𝗔𝗿𝗲𝗻𝗮
-┃✫│ 𝗗𝗿𝗮𝗴𝗼𝗻𝗯𝗮𝗹𝗹
-┃✯│ 𝗡𝗮𝗿𝘂𝘁𝗼
-┃✫│ 𝗖𝗵𝗶𝗹𝗱
-┃✯│ 𝗟𝗲𝗮𝘃𝗲𝘀
-┃✫│ 1917
-┃✯│ 𝗧𝘆𝗽𝗼𝗴𝗿𝗮𝗽𝗵𝘆
-╰══───────◇───────══╯
-●═══ 〘  𝗧𝗘𝗫𝗧𝗠𝗔𝗞𝗘𝗥  〙═──═●
-╭══───────◇───────══╮
-┃✯│ 𝗣𝘂𝗿𝗽𝗹𝗲
-┃✫│ 𝗡𝗲𝗼𝗻
-┃✯│ 𝗡𝗼𝗲𝗹
-┃✫│ 𝗠𝗲𝘁𝗮𝗹𝗹𝗶𝗰
-┃✯│ 𝗗𝗲𝘃𝗶𝗹
-┃✫│ 𝗜𝗺𝗽𝗿𝗲𝘀𝘀𝗶𝘃𝗲
-┃✯│ 𝗦𝗻𝗼𝘄
-┃✫│ 𝗪𝗮𝘁𝗲𝗿
-┃✯│ 𝗧𝗵𝘂𝗻𝗱𝗲𝗿
-┃✫│ 𝗜𝗰𝗲
-┃✯│ 𝗠𝗮𝘁𝗿𝗶𝘅
-┃✫│ 𝗦𝗶𝗹𝘃𝗲𝗿
-┃✯│ 𝗟𝗶𝗴𝗵𝘁
-╰══───────◇───────══╯
-●═══   〘 𝗠𝗜𝗦𝗖  〙 ═──═●
-╭══───────◇───────══╮
-┃✫│ 𝗪𝗲𝗮𝘁𝗵𝗲𝗿
-┃✯│ 𝗚𝗶𝘁𝗵𝘂𝗯
-┃✫│ 𝗚𝗶𝘁𝗰𝗹𝗼𝗻𝗲
-┃✯│ 𝗔𝗱𝘃𝗶𝗰𝗲
-┃✫│ 𝗥𝗲𝗺𝗼𝘃𝗲𝗯𝗴
-┃✯│ 𝗥𝗲𝗺𝗶𝗻𝗶
-┃✯│ 𝗧𝘁𝘀
-┃✯│ 𝗧𝗿𝘁
-┃✫│ 𝗙𝗮𝗰𝘁
-┃✯│ 𝗖𝗮𝘁𝗳𝗮𝗰𝘁
-┃✫│ 𝗤𝘂𝗼𝘁𝗲𝘀
-┃✯│ 𝗣𝗶𝗰𝗸𝘂𝗽𝗹𝗶𝗻𝗲
-╰══───────◇───────══╯
-●═══  〘 𝗢𝗧𝗛𝗘𝗥𝗦  〙 ═──═●
-╭══───────◇───────══╮
-┃✫│ 𝗖𝗿𝗲𝗱𝗶𝘁𝘀
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●════   〘 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 〙 ══● 
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃✦│ 𝗩𝗶𝗱𝗲𝗼
+┃✦│ 𝗣𝗹𝗮𝘆
+┃✦│ 𝗣𝗹𝗮𝘆2
+┃✦│ 𝗦𝗼𝗻𝗴
+┃✦│ 𝗦𝗼𝗻𝗴2
+┃✦│ 𝗙𝗯𝗱𝗹
+┃✦│ 𝗧𝗶𝗸𝘁𝗼𝗸
+┃✦│ 𝗧𝘄𝗶𝘁𝘁𝗲𝗿
+┃✦│ 𝗶𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺
+┃✦│ 𝗣𝗶𝗻𝘁𝗲𝗿𝗲𝘀𝘁
+┃✦│ 𝗠𝗼𝘃𝗶𝗲
+┃✦│ 𝗟𝘆𝗿𝗶𝗰𝘀
+┃✦│ 𝗪𝗵𝗮𝘁𝘀𝗼𝗻𝗴
+┃✦│ 𝗬𝘁𝘀
+┃✦│ 𝗬𝘁𝗺𝗽3
+┃✦│ 𝗬𝘁𝗺𝗽4
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═════     〘 𝗘𝗗𝗜𝗧 〙   ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃❃│ 𝗦𝘁𝗶𝗰𝗸𝗲𝗿
+┃❃│ 𝗦𝗺𝗲𝗺𝗲
+┃❃│ 𝗣𝗵𝗼𝘁𝗼
+┃❃│ 𝗠𝗽4
+┃❃│ 𝗥𝗲𝘁𝗿𝗶𝗲𝘃𝗲
+┃❃│ 𝗩𝘃
+┃❃│ 𝗩𝘃2
+┃❃│ 𝗦𝗰𝗿𝗲𝗲𝗻𝘀𝗵𝗼𝘁
+┃❃│ 𝗠𝗶𝘅
+┃❃│ 𝗧𝗮𝗸𝗲
+┃❃│ 𝗧𝘄𝗲𝗲𝘁
+┃❃│ 𝗤𝘂𝗼𝘁𝗲𝗹𝘆
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══ 〘 𝗖𝗢𝗡𝗙𝗜𝗚 𝗩𝗔𝗥𝗦 〙 ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃✥│ 𝗔𝗻𝘁𝗶𝗱𝗲𝗹𝗲𝘁𝗲
+┃✥│ 𝗔𝗻𝘁𝗶𝗰𝗮𝗹𝗹
+┃✥│ 𝗔𝗻𝘁𝗶𝗳𝗼𝗿𝗲𝗶𝗴𝗻
+┃✥│ 𝗔𝗻𝘁𝗶𝗯𝗼𝘁
+┃✥│ 𝗔𝗻𝘁𝗶𝗯𝗮𝗱𝘄𝗼𝗿𝗱
+┃✥│ 𝗔𝗻𝘁𝗶𝘁𝗮𝗴
+┃✥│ 𝗔𝗻𝘁𝗶𝗹𝗶𝗻𝗸
+┃✥│ 𝗔𝗻𝘁𝗶𝗹𝗶𝗻𝗸_𝗮𝗹𝗹
+┃✥│ 𝗚𝗽𝘁_𝗜𝗻𝗯𝗼𝘅
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══  〘 𝗙𝗢𝗢𝗧𝗕𝗔𝗟𝗟 〙   ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃❅│ 𝗘𝗽𝗹
+┃❅│ 𝗟𝗮𝗹𝗶𝗴𝗮
+┃❅│ 𝗦𝗲𝗿𝗶𝗲-𝗮
+┃❅│ 𝗕𝘂𝗻𝗱𝗲𝘀𝗹𝗶𝗴𝗮
+┃❅│ 𝗟𝗶𝗴𝘂𝗲-1
+┃❅│ 𝗙𝗶𝘅𝘁𝘂𝗿𝗲𝘀
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═════     〘 𝗚𝗣𝗧 〙   ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃◈│ 𝗔𝗶
+┃◈│ 𝗔𝗶2
+┃◈│ 𝗩𝗶𝘀𝗶𝗼𝗻
+┃◈│ 𝗗𝗲𝗳𝗶𝗻𝗲
+┃◈│ 𝗥𝗮𝘃𝗲𝗻
+┃◈│ 𝗚𝗲𝗺𝗶𝗻𝗶
+┃◈│ 𝗚𝗼𝗼𝗴𝗹𝗲
+┃◈│ 𝗚𝗽𝘁
+┃◈│ 𝗚𝗽𝘁2
+┃◈│ 𝗚𝗽𝘁3
+┃◈│ 𝗚𝗽𝘁4
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●════    〘 𝗚𝗥𝗢𝗨𝗣 〙   ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃✧│ 𝗔𝗽𝗽𝗿𝗼𝘃𝗲
+┃✧│ 𝗥𝗲𝗷𝗲𝗰𝘁
+┃✧│ 𝗣𝗿𝗼𝗺𝗼𝘁𝗲
+┃✧│ 𝗗𝗲𝗺𝗼𝘁𝗲
+┃✧│ 𝗗𝗲𝗹𝗲𝘁𝗲
+┃✧│ 𝗥𝗲𝗺𝗼𝘃𝗲
+┃✧│ 𝗙𝗮𝗸𝗲𝗿
+┃✧│ 𝗙𝗼𝗿𝗲𝗶𝗴𝗻𝗲𝗿𝘀
+┃✧│ 𝗖𝗹𝗼𝘀𝗲
+┃✧│ 𝗢𝗽𝗲𝗻
+┃✧│ 𝗖𝗹𝗼𝘀𝗲𝗧𝗶𝗺𝗲
+┃✧│ 𝗢𝗽𝗲𝗻𝗧𝗶𝗺𝗲
+┃✧│ 𝗗𝗶𝘀𝗽-𝗼𝗳𝗳
+┃✧│ 𝗗𝗶𝘀𝗽-1
+┃✧│ 𝗗𝗶𝘀𝗽-7
+┃✧│ 𝗗𝗶𝘀𝗽-90
+┃✧│ 𝗜𝗰𝗼𝗻
+┃✧│ 𝗚𝗰𝗽𝗿𝗼𝗳𝗶𝗹𝗲
+┃✧│ 𝗦𝘂𝗯𝗷𝗲𝗰𝘁
+┃✧│ 𝗗𝗲𝘀𝗰
+┃✧│ 𝗟𝗲𝗮𝘃𝗲
+┃✧│ 𝗔𝗱𝗱
+┃✧│ 𝗧𝗮𝗴𝗮𝗹𝗹
+┃✧│ 𝗛𝗶𝗱𝗲𝘁𝗮𝗴
+┃✧│ 𝗥𝗲𝘃𝗼𝗸𝗲
+┃✧│ 𝗠𝘂𝘁𝗲
+┃✧│ 𝗨𝗻𝗺𝘂𝘁𝗲
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══    〘 𝗖𝗢𝗗𝗜𝗡𝗚 〙   ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃◎│ 𝗖𝗮𝗿𝗯𝗼𝗻
+┃◎│ 𝗖𝗼𝗺𝗽𝗶𝗹𝗲-𝗰
+┃◎│ 𝗖𝗼𝗺𝗽𝗶𝗹𝗲-𝗰++
+┃◎│ 𝗖𝗼𝗺𝗽𝗶𝗹𝗲-𝗷𝘀
+┃◎│ 𝗖𝗼𝗺𝗽𝗶𝗹𝗲-𝗽𝘆
+┃◎│ 𝗜𝗻𝘀𝗽𝗲𝗰𝘁
+┃◎│ 𝗘𝗻𝗰𝗿𝘆𝗽𝘁𝗲
+┃◎│ 𝗘𝘃𝗮𝗹
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══    〘 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 〙  ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃✠│ 𝗢𝘄𝗻𝗲𝗿
+┃✠│ 𝗦𝗰𝗿𝗶𝗽𝘁
+┃✠│ 𝗠𝗲𝗻𝘂
+┃✠│ 𝗟𝗶𝘀𝘁
+┃✠│ 𝗣𝗶𝗻𝗴
+┃✠│ 𝗣𝗼𝗹𝗹
+┃✠│ 𝗔𝗹𝗶𝘃𝗲
+┃✠│ 𝗦𝗽𝗲𝗲𝗱
+┃✠│ 𝗥𝗲𝗽𝗼
+┃✠│ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲
+┃✠│ 𝗨𝗽𝘁𝗶𝗺𝗲
+┃✠│ 𝗗𝗽
+┃✠│ 𝗗𝗹𝘁
+┃✠│ 𝗠𝗮𝗶𝗹
+┃✠│ 𝗜𝗻𝗯𝗼𝘅
+┃✠│ 𝗡𝗲𝘄𝘀
+┃✠│ 𝗔𝗻𝗶𝗺𝗲
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══     〘 𝗢𝗪𝗡𝗘𝗥  〙  ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃↻│ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁
+┃↻│ 𝗔𝗱𝗺𝗶𝗻
+┃↻│ 𝗖𝗮𝘀𝘁
+┃↻│ 𝗕𝗿𝗼𝗮𝗱𝗰𝗮𝘀𝘁
+┃↻│ 𝗝𝗼𝗶𝗻
+┃↻│ 𝗚𝗲𝘁𝘃𝗮𝗿
+┃↻│ 𝗥𝗲𝗱𝗲𝗽𝗹𝗼𝘆
+┃↻│ 𝗨𝗽𝗱𝗮𝘁𝗲
+┃↻│ 𝗦𝗲𝘁𝘃𝗮𝗿
+┃↻│ 𝗕𝗼𝘁𝗽𝗽
+┃↻│ 𝗙𝘂𝗹𝗹𝗽𝗽
+┃↻│ 𝗕𝗹𝗼𝗰𝗸
+┃↻│ 𝗨𝗻𝗯𝗼𝗰𝗸
+┃↻│ 𝗞𝗶𝗹𝗹
+┃↻│ 𝗞𝗶𝗹𝗹2
+┃↻│ 𝗦𝗮𝘃𝗲
+┃↻│ >
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══    〘 𝗣𝗥𝗔𝗡𝗞  〙   ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃▧│ 𝗛𝗮𝗰𝗸
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══    〘 𝗟𝗢𝗚𝗢𝗦  〙   ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃●│ 𝗛𝗮𝗰𝗸𝗲𝗿
+┃●│ 𝗛𝗮𝗰𝗸𝗲𝗿2
+┃●│ 𝗚𝗿𝗮𝗳𝗳𝗶𝘁𝗶
+┃●│ 𝗖𝗮𝘁
+┃●│ 𝗦𝗮𝗻𝗱
+┃●│ 𝗚𝗼𝗹𝗱
+┃●│ 𝗔𝗿𝗲𝗻𝗮
+┃●│ 𝗗𝗿𝗮𝗴𝗼𝗻𝗯𝗮𝗹𝗹
+┃●│ 𝗡𝗮𝗿𝘂𝘁𝗼
+┃●│ 𝗖𝗵𝗶𝗹𝗱
+┃●│ 𝗟𝗲𝗮𝘃𝗲𝘀
+┃●│ 1917
+┃●│ 𝗧𝘆𝗽𝗼𝗴𝗿𝗮𝗽𝗵𝘆
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══ 〘  𝗧𝗘𝗫𝗧𝗠𝗔𝗞𝗘𝗥  〙 ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃○│ 𝗣𝘂𝗿𝗽𝗹𝗲
+┃○│ 𝗡𝗲𝗼𝗻
+┃○│ 𝗡𝗼𝗲𝗹
+┃○│ 𝗠𝗲𝘁𝗮𝗹𝗹𝗶𝗰
+┃○│ 𝗗𝗲𝘃𝗶𝗹
+┃○│ 𝗜𝗺𝗽𝗿𝗲𝘀𝘀𝗶𝘃𝗲
+┃○│ 𝗦𝗻𝗼𝘄
+┃○│ 𝗪𝗮𝘁𝗲𝗿
+┃○│ 𝗧𝗵𝘂𝗻𝗱𝗲𝗿
+┃○│ 𝗜𝗰𝗲
+┃○│ 𝗠𝗮𝘁𝗿𝗶𝘅
+┃○│ 𝗦𝗶𝗹𝘃𝗲𝗿
+┃○│ 𝗟𝗶𝗴𝗵𝘁
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══     〘 𝗠𝗜𝗦𝗖  〙    ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃▣│ 𝗪𝗲𝗮𝘁𝗵𝗲𝗿
+┃▣│ 𝗚𝗶𝘁𝗵𝘂𝗯
+┃▣│ 𝗚𝗶𝘁𝗰𝗹𝗼𝗻𝗲
+┃▣│ 𝗔𝗱𝘃𝗶𝗰𝗲
+┃▣│ 𝗥𝗲𝗺𝗼𝘃𝗲𝗯𝗴
+┃▣│ 𝗥𝗲𝗺𝗶𝗻𝗶
+┃▣│ 𝗧𝘁𝘀
+┃▣│ 𝗧𝗿𝘁
+┃▣│ 𝗙𝗮𝗰𝘁
+┃▣│ 𝗖𝗮𝘁𝗳𝗮𝗰𝘁
+┃▣│ 𝗤𝘂𝗼𝘁𝗲𝘀
+┃▣│ 𝗣𝗶𝗰𝗸𝘂𝗽𝗹𝗶𝗻𝗲
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══    〘 𝗢𝗧𝗛𝗘𝗥𝗦  〙  ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃✬│ 𝗕𝗶𝗯𝗹𝗲
+┃✬│ 𝗤𝘂𝗿𝗮𝗻
+┃✬│ 𝗣𝗮𝗶𝗿
+┃✬│ 𝗖𝗿𝗲𝗱𝗶𝘁𝘀
 ┃✬│ 𝗨𝗽𝗹𝗼𝗮𝗱
-┃✫│ 𝗔𝘁𝘁𝗽
+┃✬│ 𝗔𝘁𝘁𝗽
 ┃✬│ 𝗨𝗿𝗹
-┃✫│ 𝗜𝗺𝗮𝗴𝗲
+┃✬│ 𝗜𝗺𝗮𝗴𝗲
 ┃✬│ 𝗦𝘆𝘀𝘁𝗲𝗺
-┃✫╰═───────◇───────═╯
-┃   𝗠𝗮𝗱𝗲 𝗢𝗻 𝗘𝗮𝗿𝘁𝗵 𝗕𝘆 𝗛𝘂𝗺𝗮𝗻𝘀 !
-╰══────────────────══╯`;
+┃✬│═⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊
+┃✬│  𝗠𝗮𝗱𝗲 𝗢𝗻 𝗘𝗮𝗿𝘁𝗵 𝗕𝘆 𝗛𝘂𝗺𝗮𝗻𝘀 !
+╰═══════════════════════╯`;
 
 if (menu === 'VIDEO') {
 
@@ -590,7 +610,7 @@ if (menu === 'VIDEO') {
 client.sendMessage(from, { text: cap}, {quoted: m})
 
 } else if (menu === 'IMAGE') {
-client.sendMessage(m.chat, { image: { url: 'https://files.catbox.moe/duv8ac.jpg' }, caption: cap, fileLength: "9999999999"}, { quoted: m })
+client.sendMessage(m.chat, { image: { url: menulink }, caption: cap }, { quoted: m })
 } else if (menu === 'LINK') {
 client.sendMessage(m.chat, {
                         text: cap,
@@ -600,7 +620,7 @@ client.sendMessage(m.chat, {
                                 title: `𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧`,
                                 body: `${runtime(process.uptime())}`,
                                 thumbnail: fs.readFileSync('./Media/Raven.jpg'),
-                                sourceUrl: 'https://wa.me/254114660061?text=Hello👋+Nick+Nihostie+Bot+Mkuu+😔',
+                                sourceUrl: 'https://wa.me/254114660061?text=Hello+Raven+dev+I+need+a+bot',
                                 mediaType: 1,
                                 renderLargerThumbnail: true
                             }
@@ -640,6 +660,95 @@ break;
          }
         break;	
 		      
+//========================================================================================================================//		      
+ case "bible":
+		      {
+	if (!text) {
+            return reply(`Please provide a Bible reference.\n\nExample: bible John 3:16`);
+        }
+        const reference = text;
+
+try {
+        const apiUrl = `https://bible-api.com/${encodeURIComponent(reference)}`;
+        const response = await axios.get(apiUrl);
+
+        if (response.status === 200 && response.data.text) {
+            const { reference: ref, text, translation_name } = response.data;
+		
+            reply(
+                `*Hello there, below is what you requested*\n\n` +
+                `📖 *Reference:* ${ref}\n` +
+                `📚 *Verse:* ${text}\n\n` +
+		`_Requested by ${pushname}_`    
+            );
+        } else {
+            reply("*Verse not found.* Please check the reference and try again.");
+        }
+    } catch (error) {
+        console.error(error);
+        reply("*An error occurred while fetching the Bible verse.* Please try again.");
+    }
+};	      
+break;
+		      
+//========================================================================================================================//
+case 'quran': {
+  if (!text) {
+    return reply(`Please provide Surah and Ayah\n*Example:* quran 2:255`);
+  }
+
+  const input = text.split(":");
+  if (input.length !== 2) {
+    return reply("Incorrect format. Use: Surah:Ayah (e.g. 2:255)");
+  }
+
+  const [surah, ayah] = input;
+  try {
+    const res = await axios.get(`https://api.alquran.cloud/v1/ayah/${surah}:${ayah}/editions/quran-uthmani,en.asad`);
+    const arabic = res.data.data[0].text;
+    const english = res.data.data[1].text;
+    const surahInfo = res.data.data[0].surah;
+
+    const msg = `*Holy Qur'an Verse*\n\n` +
+      `*Surah:* ${surahInfo.englishName} (${surahInfo.name})\n` +
+      `*Ayah:* ${ayah}\n\n` +
+      `*Arabic:* ${arabic}\n\n` +
+      `*English:* ${english}\n\n` +
+      `_Requested by ${pushname}_`;
+
+    client.sendMessage(m.chat, { text: msg }, { quoted: m });
+  } catch (e) {
+    console.log(e);
+    reply("Could not find the verse. Please check the Surah and Ayah.");
+  }
+ }
+  break;
+		      
+//========================================================================================================================//	
+case "pair": case "rent": {
+const fetch = require("node-fetch");
+   if (!q) return await reply("Please provide valid number Example- pair 254114XXX");
+
+try {
+        const response = await fetch(`https://pairing-raven.onrender.com/pair?code=${q}`);
+        const pair = await response.json();
+
+        if (!pair || !pair.code) {
+            return await reply("Failed to retrieve pairing code. Please check the phone number and try again.");
+        }
+ const pairingCode = pair.code;
+
+const Code = ` ${pairingCode}`
+        await sleep(5000);
+        await m.reply(Code);
+	
+    } catch (error) {
+        console.error(error);
+        await reply("An error occurred. Please try again later.");
+    }
+};
+break;
+
 //========================================================================================================================//
 	      case "song": {
 const yts = require("yt-search");
@@ -1622,7 +1731,7 @@ case "gpt4":
            {
         if (!text) return reply(`Hello there, what's your question?`);
           let d = await fetchJson(
-            `https://bk9.fun/ai/jeeves-chat2?q=${text}`
+            `https://bk9.fun/ai/Aoyo?q=${text}`
           );
           if (!d.BK9) {
             return reply(
@@ -1636,35 +1745,40 @@ case "gpt4":
 
 //========================================================================================================================//
 case 'gpt3': {
-        if (!text) return reply(`Hello there, How can i help you?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/blackbox?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-	}
+        if (!q) return reply("Holla, I'm listening to you..");
+try {
+        const apiUrl = `https://vapis.my.id/api/openai?q=${encodeURIComponent(q)}`;
+        const { data } = await axios.get(apiUrl);
+
+   if (!data || !data.result) {
+            return reply("OpenAI failed to respond. Please try again later.");
+        }
+        await reply(`${data.result}`);   
+   
+} catch (e) {
+        console.error("Error in OpenAI command:", e); 
+        reply("An error occurred while communicating With API");
+    }
+};
   break;
 
 //========================================================================================================================//	      		      
 case "gpt2":
-		{
-        if (!text) return reply(`What's your question ?`);
-          let d = await fetchJson(
-            `https://bk9.fun/ai/jeeves-chat?q=${text}`
-          );
-          if (!d.BK9) {
-            return reply(
-              "An error occurred while fetching the AI chatbot response. Please try again later."
-            );
-          } else {
-            reply(d.BK9);
-          }
-      }
+   {
+       if (!q) return reply("Hello there,  what's your question ?");
+try {
+  const apiUrl = `https://lance-frank-asta.onrender.com/api/gpt?q=${encodeURIComponent(q)}`;
+  const { data } = await axios.get(apiUrl);
+
+if (!data || !data.message) {
+        return reply("Oops an error occurred!!.");
+	}
+        await reply(`${data.message}`);
+    } catch (e) {
+        console.error("Error in AI command:", e);
+ reply("An error occurred while communicating with API.");
+    }
+}; 
                 break;
 
 //========================================================================================================================//
@@ -1867,12 +1981,12 @@ break;
     if (!text) {
       return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 𝗶𝘀 𝗥𝗔𝗩𝗘𝗡 𝗔𝗶, 𝘂𝘀𝗶𝗻𝗴 𝗴𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
     }
-    if (!/image/.test(mime)) {
+    if (!/image|pdf/.test(mime)) {
       return m.reply("𝗛𝘂𝗵 𝘁𝗵𝗶𝘀 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲! 𝗣𝗹𝗲𝗮𝘀𝗲 𝗧𝗮𝗴 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝘁𝗵𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵 !");
     }
     let _0x3439a2 = await client.downloadAndSaveMediaMessage(m.quoted);
     let _0x3dfb7c = await uploadToCatbox(_0x3439a2);
-    m.reply("𝗔 𝗺𝗼𝗺𝗲𝘁, 𝗹𝗲𝗺𝗺𝗲 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗜𝗺𝗮𝗴𝗲...");
+    m.reply(`𝗔 𝗺𝗼𝗺𝗲𝘁, 𝗹𝗲𝗺𝗺𝗲 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 ${mime.includes("pdf") ? "𝗣𝗗𝗙" : "𝗜𝗺𝗮𝗴𝗲"} ...`);
     const _0x4e9e6a = new _0x817910("AIzaSyDJUtskTG-MvQdlT4tNE319zBqLMFei8nQ");
     async function _0x309a3c(_0x1400ed, _0x1a081e) {
       const _0x53e4b2 = {
@@ -1912,11 +2026,11 @@ try {
 if (!m.quoted) return m.reply("Send the image then tag it with the instruction.");
 
 if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝘀𝗼𝗺𝗲 𝗶𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻𝘀 𝗲𝗵! 𝗧𝗵𝗶𝘀 Raven AI 𝗨𝘀𝗲 𝗚𝗲𝗺𝗶𝗻𝗶-𝗽𝗿𝗼-𝘃𝗶𝘀𝗶𝗼𝗻 𝘁𝗼 𝗮𝗻𝗮𝗹𝘆𝘀𝗲 𝗶𝗺𝗮𝗴𝗲𝘀.");
-if (!/image/.test(mime)) return m.reply("That is not an image, try again while quoting an actual image.");             
+if (!/image|pdf/.test(mime)) return m.reply("That is not an image, try again while quoting an actual image.");             
 
                     let fdr = await client.downloadAndSaveMediaMessage(m.quoted)
                     let fta = await uploadToCatbox(fdr)
-                    m.reply("𝗔 𝗠𝗼𝗺𝗲𝗻𝘁, 𝗥𝗮𝘃𝗲𝗻[𝗥𝗔𝗩𝗘𝗡-𝗔𝗜] 𝗶𝘀 𝗮𝗻𝗮𝗹𝘆𝘇𝗶𝗻𝗴 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲. . .");
+                    m.reply(`𝗔 𝗠𝗼𝗺𝗲𝗻𝘁, 𝗥𝗮𝘃𝗲𝗻[𝗥𝗔𝗩𝗘𝗡-𝗔𝗜] 𝗶𝘀 𝗮𝗻𝗮𝗹𝘆𝘇𝗶𝗻𝗴 𝘁𝗵𝗲 𝗰𝗼𝗻𝘁𝗲𝗻𝘁𝘀 𝗼𝗳 𝘁𝗵𝗲 ${mime.includes("pdf") ? "𝗣𝗗𝗙" : "𝗜𝗺𝗮𝗴𝗲"} . . .`);
 
 const data = await fetchJson(`https://api.dreaded.site/api/gemini-vision?url=${fta}&instruction=${text}`);
 let res = data.result
@@ -3107,6 +3221,11 @@ const { igdl } = require("ruhend-scraper");
     return m.reply("That is not a valid Instagram link.");
   }
 
+await client.sendMessage(m.chat, {
+      react: { text: '⏳', key: m.key }
+    });
+
+
   try {
     
     const downloadData = await igdl(text);
@@ -3135,28 +3254,37 @@ break;
 
 //========================================================================================================================//
   case "twitter": case "twtdl": {
-if (!text) return m.reply("𝗽𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶𝗱 𝘁𝘄𝗶𝘁𝘁𝗲𝗿 𝗹𝗶𝗻𝗸 !");
+ if (!q) return reply("Please provide a valid Twitter Link !");
 
-try {
-
-const data = await fetchJson(`https://api.dreaded.site/api/alldl?url=${text}`);
-
-if (!data || data.status !== 200 || !data.data || !data.data.videoUrl) {
-            return m.reply("𝗦𝗼𝗿𝗿𝘆 𝘁𝗵𝗲 𝗔𝗣𝗜 𝗱𝗶𝗱𝗻'𝘁 𝗿𝗲𝘀𝗽𝗼𝗻𝗱 𝗰𝗼𝗿𝗿𝗲𝗰𝘁𝗹𝘆. 𝗣𝗹𝗲𝗮𝘀𝗲 𝘁𝗿𝘆 𝗔𝗴𝗮𝗶𝗻 𝗹𝗮𝘁𝗲𝗿!");
-        }
-
-const twtvid = data.data.videoUrl;
-
-await client.sendMessage(m.chat,{video : {url : twtvid },caption : `𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧`,gifPlayback : false },{quoted : m}) 
-
-} catch (e) {
-
-m.reply("An error occured. API might be down\n" + e)
-
+if (!text.includes('x.com')) {
+    return m.reply("That is not a valid Twitter link.");
 }
+	  
+await client.sendMessage(m.chat, {
+      react: { text: '⏳', key: m.key }
+    });
+		      
+try {
+    const response = await axios.get(`https://www.dark-yasiya-api.site/download/twitter?url=${q}`);
+    const data = response.data;
 
- }
-  break;
+    if (!data || !data.status || !data.result) {
+      return reply("Failed to retrieve Twitter video. Please check the link and try again.");
+    }
+
+    const { nicole } = data.result;
+
+	await client.sendMessage(m.chat, {
+              video: { url: nicole },
+              caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧"
+            }, { quoted: m });
+
+	} catch (error) {
+    console.error("Error:", error);
+    reply("An error occurred while processing your request. Please try again.");
+  }
+};	      
+	break;
 
 //========================================================================================================================//		      
 	 case "facebook": case "fb": case "fbdl": {
@@ -3168,6 +3296,9 @@ if (!text) {
         return m.reply("That is not a facebook link.");
     }
 
+await client.sendMessage(m.chat, {
+                       react: { text: '⏳', key: m.key }
+                      });
     try {
                 let data = await fetchJson(`https://api.dreaded.site/api/facebook?url=${text}`);
 
@@ -3207,7 +3338,11 @@ if (!text) {
 if (!text.includes("tiktok.com")) {
         return m.reply("That is not a TikTok link.");
 }
-  try {
+await client.sendMessage(m.chat, {
+      react: { text: '⏳', key: m.key }
+    });
+
+ try {
     const response = await axios.get(`https://bk9.fun/download/tiktok?url=${encodeURIComponent(text)}`);
 
     if (response.data.status && response.data.BK9) {
@@ -3246,7 +3381,11 @@ if (!text.includes("tiktok.com")) {
 		      
 if (!text.includes("pin.it")) {
         return m.reply("That is not a pinterest link.");
-    }		      
+    }	
+await client.sendMessage(m.chat, {
+      react: { text: '⏳', key: m.key }
+    });
+ 
 try {
         const pinterestUrl = text;
         const response = await axios.get(`https://bk9.fun/download/pinterest?url=${encodeURIComponent(pinterestUrl)}`);
@@ -3280,7 +3419,144 @@ if (imageUrl) {
     }
 }
 break;
+		      
+//========================================================================================================================//
+	      case "epl": case "epl-table": {
+		      
+try {
+        const data = await fetchJson('https://api.dreaded.site/api/standings/PL');
+        const standings = data.data;
 
+        const message = ` 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗘𝗽𝗹 𝗧𝗮𝗯𝗹𝗲 𝗦𝘁𝗮𝗻𝗱𝗶𝗻𝗴𝘀:-\n\n${standings}`;
+
+        await m.reply(message);
+    } catch (error) {
+        m.reply('Something went wrong. Unable to fetch 𝗘𝗽𝗹 standings.');
+    }
+
+ }
+	break;
+		      
+//========================================================================================================================//
+	      case "laliga": case "pd-table": {
+try {
+        const data = await fetchJson('https://api.dreaded.site/api/standings/PD');
+        const standings = data.data;
+
+        const message = `𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗟𝗮𝗹𝗶𝗴𝗮 𝗧𝗮𝗯𝗹𝗲 𝗦𝘁𝗮𝗻𝗱𝗶𝗻𝗴𝘀:-\n\n${standings}`;
+        await m.reply(message);
+
+    } catch (error) {
+        m.reply('Something went wrong. Unable to fetch 𝗟𝗮𝗹𝗶𝗴𝗮 standings.');
+  }
+}   
+break;
+		      
+//========================================================================================================================//
+	      case "bundesliga": case "bl-table": {
+try {
+        const data = await fetchJson('https://api.dreaded.site/api/standings/BL1');
+        const standings = data.data;
+
+        const message = `𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗕𝘂𝗻𝗱𝗲𝘀𝗹𝗶𝗴𝗮 𝗧𝗮𝗯𝗹𝗲 𝗦𝘁𝗮𝗻𝗱𝗶𝗻𝗴𝘀\n\n${standings}`;
+        await m.reply(message);
+
+    } catch (error) {
+        m.reply('Something went wrong. Unable to fetch 𝗕𝘂𝗻𝗱𝗲𝘀𝗹𝗶𝗴𝗮 standings.');
+    }
+}
+break;
+		      
+//========================================================================================================================//
+	      case "ligue-1": case "lg-1": {
+  try {
+        const data = await fetchJson('https://api.dreaded.site/api/standings/FL1');
+        const standings = data.data;
+
+        const message = `𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗟𝗶𝗴𝘂𝗲-1 𝗧𝗮𝗯𝗹𝗲 𝗦𝘁𝗮𝗻𝗱𝗶𝗻𝗴𝘀\n\n${standings}`;
+        await m.reply(message);
+
+    } catch (error) {
+        m.reply('Something went wrong. Unable to fetch 𝗹𝗶𝗴𝘂𝗲-1 standings.');
+    }
+}
+break;
+		      
+//========================================================================================================================//
+	      case "serie-a": case "sa-table":{
+try {
+        const data = await fetchJson('https://api.dreaded.site/api/standings/SA');
+        const standings = data.data;
+
+        const message = `𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝗦𝗲𝗿𝗶𝗲-𝗮 𝗧𝗮𝗯𝗹𝗲 𝗦𝘁𝗮𝗻𝗱𝗶𝗻𝗴𝘀\n\n${standings}`;
+        await m.reply(message);
+
+    } catch (error) {
+        m.reply('Something went wrong. Unable to fetch 𝗦𝗲𝗿𝗶𝗲-𝗮 standings.');
+    }
+}
+break;
+		      
+//========================================================================================================================//
+     case "fixtures": case "matches": {
+ try {
+        let pl, laliga, bundesliga, serieA, ligue1;
+
+        const plData = await fetchJson('https://api.dreaded.site/api/matches/PL');
+        pl = plData.data;
+
+        const laligaData = await fetchJson('https://api.dreaded.site/api/matches/PD');
+        laliga = laligaData.data;
+
+        const bundesligaData = await fetchJson('https://api.dreaded.site/api/matches/BL1');
+        bundesliga = bundesligaData.data;
+
+        const serieAData = await fetchJson('https://api.dreaded.site/api/matches/SA');
+        serieA = serieAData.data;
+
+        const ligue1Data = await fetchJson('https://api.dreaded.site/api/matches/FR');
+        ligue1 = ligue1Data.data;
+
+        let message = `𝗧𝗼𝗱𝗮𝘆𝘀 𝗙𝗼𝗼𝘁𝗯𝗮𝗹𝗹 𝗙𝗶𝘅𝘁𝘂𝗿𝗲𝘀 ⚽\n\n`;
+
+        message += typeof pl === 'string' ? `🇬🇧 Premier League:\n${pl}\n\n` : pl.length > 0 ? `🇬🇧 Premier League:\n${pl.map(match => {
+            const { game, date, time } = match;
+            return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
+        }).join('\n')}\n\n` : "🇬🇧 Premier League: No matches scheduled\n\n";
+
+        if (typeof laliga === 'string') {
+            message += `🇪🇸 La Liga:\n${laliga}\n\n`;
+        } else {
+            message += laliga.length > 0 ? `🇪🇸 La Liga:\n${laliga.map(match => {
+                const { game, date, time } = match;
+                return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
+            }).join('\n')}\n\n` : "🇪🇸 La Liga: No matches scheduled\n\n";
+        }
+
+        message += typeof bundesliga === 'string' ? `🇩🇪 Bundesliga:\n${bundesliga}\n\n` : bundesliga.length > 0 ? `🇩🇪 Bundesliga:\n${bundesliga.map(match => {
+            const { game, date, time } = match;
+            return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
+        }).join('\n')}\n\n` : "🇩🇪 Bundesliga: No matches scheduled\n\n";
+
+        message += typeof serieA === 'string' ? `🇮🇹 Serie A:\n${serieA}\n\n` : serieA.length > 0 ? `🇮🇹 Serie A:\n${serieA.map(match => {
+            const { game, date, time } = match;
+            return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
+        }).join('\n')}\n\n` : "🇮🇹 Serie A: No matches scheduled\n\n";
+
+        message += typeof ligue1 === 'string' ? `🇫🇷 Ligue 1:\n${ligue1}\n\n` : ligue1.length > 0 ? `🇫🇷 Ligue 1:\n${ligue1.map(match => {
+            const { game, date, time } = match;
+            return `${game}\nDate: ${date}\nTime: ${time} (EAT)\n`;
+        }).join('\n')}\n\n` : "🇫🇷 Ligue 1: No matches scheduled\n\n";
+
+        message += "Times and dates are in East African Timezone (EAT).";
+
+        await m.reply(message);
+    } catch (error) {
+        m.reply('Something went wrong. Unable to fetch matches.' + error);
+    }
+};
+break;		      
+		      
 //========================================================================================================================//		      
  case 'sc': case 'script': case 'repo':
 
@@ -3739,32 +4015,68 @@ if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶�
 	if (urlIndex < 0 || urlIndex >= urls.length)
 		return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗟𝗶𝗻𝗸.');
 
-        const { videos } = await yts(text);
-        if (!videos || videos.length === 0) return m.reply("No songs found!");
+        let search = await yts(text);
+    let link = search.all[0].url;
 
-        const urlYt = videos[0].url;
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/audio?url=${urlYt}`);
+    const apis = [
+      `https://xploader-api.vercel.app/ytmp3?url=${link}`,
+      `https://apis.davidcyriltech.my.id/youtube/mp3?url=${link}`,
+      `https://api.ryzendesu.vip/api/downloader/ytmp3?url=${link}`,
+      `https://api.dreaded.site/api/ytdl/audio?url=${link}`
+       ];
 
-        if (!data || !data.result || !data.result.url) {
-            return m.reply("Failed to fetch audio from the API.");
+    for (const api of apis) {
+      try {
+        let data = await fetchJson(api);
+
+        // Checking if the API response is successful
+        if (data.status === 200 || data.success) {
+          let videoUrl = data.result?.downloadUrl || data.url;
+          let outputFileName = `${search.all[0].title.replace(/[^a-zA-Z0-9 ]/g, "")}.mp3`;
+          let outputPath = path.join(__dirname, outputFileName);
+
+          const response = await axios({
+            url: videoUrl,
+            method: "GET",
+            responseType: "stream"
+          });
+
+          if (response.status !== 200) {
+            m.reply("sorry but the API endpoint didn't respond correctly. Try again later.");
+            continue;
+          }
+		ffmpeg(response.data)
+            .toFormat("mp3")
+            .save(outputPath)
+            .on("end", async () => {
+              await client.sendMessage(
+                m.chat,
+                {
+                  document: { url: outputPath },
+                  mimetype: "audio/mp3",
+		  caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
+                  fileName: outputFileName,
+                },
+                { quoted: m }
+              );
+              fs.unlinkSync(outputPath);
+            })
+            .on("error", (err) => {
+              m.reply("Download failed\n" + err.message);
+            });
+
+          return;
         }
-
-        const audioUrl = data.result.url;
-const title = data.result.title;
-
-        await client.sendMessage(
-            m.chat,
-            {
-                audio: { url: audioUrl },
-                mimetype: "audio/mpeg",
-                fileName: `${title}.mp3`,
-            },
-            { quoted: m }
-        );
-    } catch (error) {
-        m.reply("Download failed\n" + error.message);
-    }
-}
+      } catch (e) {
+        // Continue to the next API if one fails
+        continue;
+      }
+   }
+    m.reply("An error occurred. All APIs might be down or unable to process the request.");
+  } catch (error) {
+    m.reply("Download failed\n" + error.message);
+  }
+ }
   break;
 
 //========================================================================================================================//		      
@@ -3780,34 +4092,47 @@ if (!text) return m.reply("𝗣𝗿𝗼𝘃𝗶𝗱𝗲 𝗮 𝘃𝗮𝗹𝗶�
         if (urlIndex < 0 || urlIndex >= urls.length)
                 return m.reply('𝗜𝗻𝘃𝗮𝗹𝗶𝗱 𝗹𝗶𝗻𝗸.');
 
-        const { videos } = await yts(text);
-        if (!videos || videos.length === 0) return m.reply("No songs found!");
-
-        const urlYt = videos[0].url;
-        let data = await fetchJson(`https://api.dreaded.site/api/ytdl/video?url=${urlYt}`);
-
-        if (!data || !data.result || !data.result.url) {
-            return m.reply("Failed to fetch video from the API.");
-        }
-
-        const audioUrl = data.result.url;
-const title = data.result.title;
-
-
-        await client.sendMessage(
-            m.chat,
-            {
-                video: { url: audioUrl },
-                mimetype: "video/mpeg",
-                fileName: `${title}.mp4`,
-            },
-            { quoted: m }
-        );
-    } catch (error) {
-        m.reply("Download failed\n" + error.message);
+        let search = await yts(text);
+    if (!search.all.length) {
+      return reply(client, m, "No results found for your query.");
     }
-}        
-break;
+    let link = search.all[0].url; 
+
+    const apiUrl = `https://apis-keith.vercel.app/download/dlmp4?url=${link}`;
+
+    let response = await fetch(apiUrl);
+    let data = await response.json();
+
+    if (data.status && data.result) {
+      const videoData = {
+        title: data.result.title,
+        downloadUrl: data.result.downloadUrl,
+        thumbnail: search.all[0].thumbnail,
+        format: data.result.format,
+        quality: data.result.quality,
+      };
+
+      await client.sendMessage(
+        m.chat,
+        {
+          video: { url: videoData.downloadUrl },
+          mimetype: "video/mp4",
+          caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
+        },
+        { quoted: m }
+      );
+
+      return;
+    } else {
+      
+      return reply("Unable to fetch the video. Please try again later.");
+    }
+  } catch (error) {
+ 
+    return reply(`An error occurred: ${error.message}`);
+  }
+};
+  break;
 
 //========================================================================================================================//		      
     case "ping": case "speed": {
@@ -4037,7 +4362,7 @@ if (!text) return m.reply("No emojis provided ? ")
           case 'broadcast': { 
          if (!Owner) throw NotOwner; 
          if (!text) { 
-             reply("❌ No broadcast message provided!") 
+             reply("Provide a message to cats!") 
              return; 
          } 
          let getGroups = await client.groupFetchAllParticipating() 
@@ -4047,10 +4372,10 @@ if (!text) return m.reply("No emojis provided ? ")
          let res = groups.map(v => v.id) 
          reply(` Broadcasting in ${res.length} Group Chat, in ${res.length * 1.5} seconds`) 
          for (let i of res) { 
-             let txt = `𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧 𝗕𝗥𝗢𝗔𝗗𝗖𝗔𝗦𝗧 >\n\n🀄 Message: ${text}\n\nAuthor: ${pushname}` 
+             let txt = `𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧 𝗕𝗥𝗢𝗔𝗗𝗖𝗔𝗦𝗧\n\n🀄 Message: ${text}\n\nAuthor: ${pushname}` 
              await client.sendMessage(i, { 
                  image: { 
-                     url: "https://telegra.ph/file/416c3ae0cfe59be8db011.jpg" 
+                     url: menulink
                  }, 
                  caption: `${txt}` 
              }) 
@@ -4137,7 +4462,7 @@ case "block": {
                break;
 
 //========================================================================================================================//		      
-	      case "enc": case "encrypte": {
+ case "enc": case "encrypte": {
 	const Obf = require("javascript-obfuscator");
 
     // Check if the quoted message has text
