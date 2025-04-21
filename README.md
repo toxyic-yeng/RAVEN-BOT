@@ -58,7 +58,11 @@ Our AI features use random APIs to run, so sometimes they may be down.
             
 
 ###  ` Deploy On Heroku`
-
+<p align="center">
+     <a href="https://verify-me-umber.vercel.app/">
+       <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku"/>
+     </a>
+   </p>
 
  ***[![Tap to deploy on heroku](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?button-url=https://github.com/HunterNick2/RAVEN-BOT&template=https://github.com/HunterNick2/RAVEN-BOT.git)***
  
