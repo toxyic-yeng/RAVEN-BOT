@@ -9,6 +9,8 @@ const chalk = require("chalk");
 const speed = require("performance-now");
 const Genius = require("genius-lyrics");
 const yts = require("yt-search");
+let lastTextTime = 0;
+const messageDelay = 3000;
 const { DateTime } = require('luxon');
 const uploadtoimgur = require('./lib/imgur');
 const uploadToCatbox = require('./lib/catbox');
@@ -236,18 +238,27 @@ return (ramm)
 }  
 //========================================================================================================================// 
     if (gptdm === 'TRUE' && m.chat.endsWith("@s.whatsapp.net")) {
+if (itsMe) return;
 	    
 try {
+	const currentTime = Date.now();
+          if (currentTime - lastTextTime < messageDelay) {
+            console.log('Message skipped: Too many messages in a short time.');
+            return;
+	  }
+	
   const { default: Gemini } = await import('gemini-ai');
+  const gemini = new Gemini("AIzaSyDJUtskTG-MvQdlT4tNE319zBqLMFei8nQ");
+  const chat = gemini.createChat();
 
-        const gemini = new Gemini("AIzaSyDJUtskTG-MvQdlT4tNE319zBqLMFei8nQ");
-        const chat = gemini.createChat();
-
-        const res = await chat.ask(text);
+      const res = await chat.ask(text);
 
         await m.reply(res);
+
+lastTextTime = currentTime;
+	
     } catch (e) {
-        m.reply("I am unable to generate responses\n\n" + e);
+        m.reply("I am unable to generate text\n\n" + e);
     }
 }
 //========================================================================================================================//
