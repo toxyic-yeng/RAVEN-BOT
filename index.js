@@ -25,9 +25,9 @@ const figlet = require("figlet");
 const app = express();
 const _ = require("lodash");
 let lastTextTime = 0;
-const messageDelay = 5000;
+const messageDelay = 3000;
 const currentTime = Date.now();
-const event = require('./action/events');
+const Events = require('./action/events');
 const authenticationn = require('./action/auth');
 const PhoneNumber = require("awesome-phonenumber");
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/ravenexif');
@@ -80,17 +80,16 @@ async function startRaven() {
       if (!mek.message) return;
       mek.message = Object.keys(mek.message)[0] === "ephemeralMessage" ? mek.message.ephemeralMessage.message : mek.message;
             
-      if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
+ if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
         client.readMessages([mek.key]);
       }
             
- if (autolike === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
+ if (autoviewstatus === 'TRUE' && autolike === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
         const nickk = await client.decodeJid(client.user.id);
         const emojis = ['🗿', '⌚️', '💠', '👣', '🍆', '💔', '🤍', '❤️‍🔥', '💣', '🧠', '🦅', '🌻', '🧊', '🛑', '🧸', '👑', '📍', '😅', '🎭', '🎉', '😳', '💯', '🔥', '💫', '🐒', '💗', '❤️‍🔥', '👁️', '👀', '🙌', '🙆', '🌟', '💧', '🦄', '🟢', '🎎', '✅', '🥱', '🌚', '💚', '💕', '😉', '😒'];
         const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-        const delayMessage = 2000;
         await client.sendMessage(mek.key.remoteJid, { react: { text: randomEmoji, key: mek.key, } }, { statusJidList: [mek.key.participant, nickk] });
-        await sleep(delayMessage);
+        await sleep(messageDelay);
    console.log('Reaction sent successfully✅️');
           }
             
@@ -148,7 +147,7 @@ if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
                 }
             }
         }
-        event(client, update); // Call existing event handler
+        Events(client, update); // Call existing event handler
     });
 
  client.ev.on('call', async (callData) => {
