@@ -22,7 +22,7 @@ const Client = new Genius.Client("TUoAEhL79JJyU-MpOsBDkFhJFWFH28nv6dgVgPA-9R1YRw
 const { downloadYouTube, downloadSoundCloud, downloadSpotify, searchYouTube, searchSoundCloud, searchSpotify } = require('./action/wee');
 const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/ravenupload');
 const { Configuration, OpenAI } = require("openai");
-const { menu, menulink, autoread, mode, antidel, antitag, appname, herokuapi, gptdm, botname, antibot, prefix, author, packname, mycode, admin, botAdmin, dev, group, bad, DevRaven, NotOwner, antilink, antilinkall, wapresence, badwordkick } = require("./set.js");
+const { menu, menulink, autoread, mode, antidel, antitag, appname, herokuapi, gptdm, botname, antibot, prefix, author, packname, mycode, admin, botAdmin, dev, group, bad, owner, NotOwner, antilink, antilinkall, wapresence, badwordkick } = require("./set.js");
 const { smsg, runtime, fetchUrl, isUrl, processTime, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/ravenfunc');
 const { exec, spawn, execSync } = require("child_process");
 module.exports = raven = async (client, m, chatUpdate, store) => {
@@ -83,7 +83,7 @@ module.exports = raven = async (client, m, chatUpdate, store) => {
     const qmsg = (quoted.msg || quoted);
     const cmd = body.startsWith(prefix);
     const badword = bad.split(",");
-    const Owner = DevRaven.map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
+    const Owner = owner.map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
     
 //========================================================================================================================//		      
 //========================================================================================================================//	      
