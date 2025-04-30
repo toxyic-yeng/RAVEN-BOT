@@ -35,7 +35,7 @@ const wapresence = process.env.WA_PRESENCE || 'recording';
 const antilink = process.env.ANTILINK || 'TRUE';
 const mycode = process.env.CODE || '254';
 const antiforeign = process.env.ANTIFOREIGN || 'TRUE';
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 const antilinkall = process.env.ANTILINK_ALL || 'TRUE';
 
 module.exports = { session, sessionName, autobio, author, packname, dev, owner, badwordkick, bad, mode, group, NotOwner, botname, botAdmin, antiforeign, menu, menulink, autoread, antilink, admin, mycode, antilinkall, anticall, antitag, antidel, wapresence, welcomegoodbye, antibot, herokuapi, prefix, port, gptdm, appname, autolike, autoviewstatus };  
