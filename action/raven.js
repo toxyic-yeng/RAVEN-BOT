@@ -770,11 +770,12 @@ m.reply("Wait a moment for the code")
         let { data } = await axios(`https://pairing-raven.onrender.com/code?number=${number}`);
         let code = data.code;
 		
-const Code = ` ${code}`
-await sleep(5000);
+const Code = `${code}`
+await sleep(messageDelay);
 	
- await m.reply(Code);
-	}
+            await m.reply(Code);
+	
+     }
     } catch (error) {
         console.error(error);
         await reply("An error occurred. Please try again later.");
