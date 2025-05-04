@@ -1,9 +1,10 @@
-// Copy paste 😁😁
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, getBinaryNodeChild, getBinaryNodeChildren, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const path = require('path');
 const util = require("util");
 const mumaker = require("mumaker");
+const crypto = require('crypto');
+const translatte = require('translatte');
 global.axios = require('axios').default
 const chalk = require("chalk");
 const speed = require("performance-now");
@@ -12,18 +13,18 @@ const yts = require("yt-search");
 let lastTextTime = 0;
 const messageDelay = 3000;
 const { DateTime } = require('luxon');
-const uploadtoimgur = require('./lib/imgur');
-const uploadToCatbox = require('./lib/catbox');
+const uploadtoimgur = require('../lib/imgur');
+const uploadToCatbox = require('../lib/catbox');
 const advice = require("badadvice");
 const {c, cpp, node, python, java} = require('compile-run');
 const acrcloud = require("acrcloud"); 
 const ytdl = require("ytdl-core");
 const Client = new Genius.Client("TUoAEhL79JJyU-MpOsBDkFhJFWFH28nv6dgVgPA-9R1YRwLNP_zicdX2omG2qKE8gYLJat5F5VSBNLfdnlpfJg"); // Scrapes if no key is provided
-const { downloadYouTube, downloadSoundCloud, downloadSpotify, searchYouTube, searchSoundCloud, searchSpotify } = require('./action/wee');
-const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/ravenupload');
+const { downloadYouTube, downloadSoundCloud, downloadSpotify, searchYouTube, searchSoundCloud, searchSpotify } = require('../action/wee');
+const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('../lib/ravenupload');
 const { Configuration, OpenAI } = require("openai");
-const { menu, menulink, autoread, mode, antidel, antitag, appname, herokuapi, gptdm, botname, antibot, prefix, author, packname, mycode, admin, botAdmin, dev, group, bad, owner, NotOwner, antilink, antilinkall, wapresence, badwordkick } = require("./set.js");
-const { smsg, runtime, fetchUrl, isUrl, processTime, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/ravenfunc');
+const { menu, menulink, autoread, mode, antidel, antitag, appname, herokuapi, gptdm, botname, antibot, prefix, author, packname, mycode, admin, botAdmin, dev, group, bad, owner, NotOwner, antilink, antilinkall, wapresence, badwordkick } = require("../set.js");
+const { smsg, runtime, fetchUrl, isUrl, processTime, formatp, tanggal, formatDate, getTime,  sleep, generateProfilePicture, clockString, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('../lib/ravenfunc');
 const { exec, spawn, execSync } = require("child_process");
 module.exports = raven = async (client, m, chatUpdate, store) => {
   try {
@@ -519,28 +520,26 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃✠│ 𝗗𝗹𝘁
 ┃✠│ 𝗠𝗮𝗶𝗹
 ┃✠│ 𝗜𝗻𝗯𝗼𝘅
-┃✠│ 𝗡𝗲𝘄𝘀
-┃✠│ 𝗔𝗻𝗶𝗺𝗲
 ╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
 ●═══     〘 𝗢𝗪𝗡𝗘𝗥  〙  ══●
 ╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
-┃↻│ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁
-┃↻│ 𝗔𝗱𝗺𝗶𝗻
-┃↻│ 𝗖𝗮𝘀𝘁
-┃↻│ 𝗕𝗿𝗼𝗮𝗱𝗰𝗮𝘀𝘁
-┃↻│ 𝗝𝗼𝗶𝗻
-┃↻│ 𝗚𝗲𝘁𝘃𝗮𝗿
-┃↻│ 𝗥𝗲𝗱𝗲𝗽𝗹𝗼𝘆
-┃↻│ 𝗨𝗽𝗱𝗮𝘁𝗲
-┃↻│ 𝗦𝗲𝘁𝘃𝗮𝗿
-┃↻│ 𝗕𝗼𝘁𝗽𝗽
-┃↻│ 𝗙𝘂𝗹𝗹𝗽𝗽
-┃↻│ 𝗕𝗹𝗼𝗰𝗸
-┃↻│ 𝗨𝗻𝗯𝗼𝗰𝗸
-┃↻│ 𝗞𝗶𝗹𝗹
-┃↻│ 𝗞𝗶𝗹𝗹2
-┃↻│ 𝗦𝗮𝘃𝗲
-┃↻│ >
+┃□│ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁
+┃□│ 𝗔𝗱𝗺𝗶𝗻
+┃□│ 𝗖𝗮𝘀𝘁
+┃□│ 𝗕𝗿𝗼𝗮𝗱𝗰𝗮𝘀𝘁
+┃□│ 𝗝𝗼𝗶𝗻
+┃□│ 𝗚𝗲𝘁𝘃𝗮𝗿
+┃□│ 𝗥𝗲𝗱𝗲𝗽𝗹𝗼𝘆
+┃□│ 𝗨𝗽𝗱𝗮𝘁𝗲
+┃□│ 𝗦𝗲𝘁𝘃𝗮𝗿
+┃□│ 𝗕𝗼𝘁𝗽𝗽
+┃□│ 𝗙𝘂𝗹𝗹𝗽𝗽
+┃□│ 𝗕𝗹𝗼𝗰𝗸
+┃□│ 𝗨𝗻𝗯𝗼𝗰𝗸
+┃□│ 𝗞𝗶𝗹𝗹
+┃□│ 𝗞𝗶𝗹𝗹2
+┃□│ 𝗦𝗮𝘃𝗲
+┃□│ >
 ╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
 ●═══    〘 𝗣𝗥𝗔𝗡𝗞  〙   ══●
 ╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
@@ -578,20 +577,31 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╭══�
 ┃○│ 𝗦𝗶𝗹𝘃𝗲𝗿
 ┃○│ 𝗟𝗶𝗴𝗵𝘁
 ╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
-●═══     〘 𝗠𝗜𝗦𝗖  〙    ══●
+●═══    〘  𝗨𝗧𝗜𝗟𝗦  〙   ══●
 ╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
 ┃▣│ 𝗪𝗲𝗮𝘁𝗵𝗲𝗿
 ┃▣│ 𝗚𝗶𝘁𝗵𝘂𝗯
 ┃▣│ 𝗚𝗶𝘁𝗰𝗹𝗼𝗻𝗲
-┃▣│ 𝗔𝗱𝘃𝗶𝗰𝗲
 ┃▣│ 𝗥𝗲𝗺𝗼𝘃𝗲𝗯𝗴
 ┃▣│ 𝗥𝗲𝗺𝗶𝗻𝗶
 ┃▣│ 𝗧𝘁𝘀
 ┃▣│ 𝗧𝗿𝘁
-┃▣│ 𝗙𝗮𝗰𝘁
-┃▣│ 𝗖𝗮𝘁𝗳𝗮𝗰𝘁
-┃▣│ 𝗤𝘂𝗼𝘁𝗲𝘀
-┃▣│ 𝗣𝗶𝗰𝗸𝘂𝗽𝗹𝗶𝗻𝗲
+┃▣│ 𝗖𝗮𝗹𝗰
+╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
+●═══   〘  𝗥𝗔𝗡𝗗𝗢𝗠  〙  ══●
+╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
+┃✪│ 𝗙𝗮𝗰𝘁
+┃✪│ 𝗙𝘂𝗻𝗳𝗮𝗰𝘁
+┃✪│ 𝗖𝗮𝘁𝗳𝗮𝗰𝘁
+┃✪│ 𝗔𝗱𝘃𝗶𝗰𝗲
+┃✪│ 𝗝𝗼𝗸𝗲
+┃✪│ 𝗡𝗲𝘄𝘀
+┃✪│ 𝗥𝘀𝗵𝗶𝗽
+┃✪│ 𝗚𝗽𝗮𝘀𝘀
+┃✪│ 𝗔𝗻𝗶𝗺𝗲
+┃✪│ 𝗔𝗻𝗶𝗺𝗲𝗴𝗶𝗿𝗹
+┃✪│ 𝗤𝘂𝗼𝘁𝗲𝘀
+┃✪│ 𝗣𝗶𝗰𝗸𝘂𝗽𝗹𝗶𝗻𝗲
 ╰══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╯
 ●═══    〘 𝗢𝗧𝗛𝗘𝗥𝗦  〙  ══●
 ╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
@@ -1731,7 +1741,156 @@ m.reply("*Wait a moment...*");
   }
 	    }
 		break;
-		      
+
+//========================================================================================================================//		      
+case 'joke': {
+try {
+        const url = 'https://official-joke-api.appspot.com/random_joke';  // API for random jokes
+        const response = await axios.get(url);
+        const joke = response.data;
+        const jokeMessage = `
+😂 *Below is a random joke for you* 😂\n\n
+*${joke.setup}*\n\n
+${joke.punchline} 😄
+`;
+        return reply(jokeMessage);
+    } catch (e) {
+        console.log(e);
+        return reply("Couldn't fetch a joke right now. Please try again later.");
+    }
+}
+break;
+
+//========================================================================================================================//		      
+   case "gpass": case 'genpassword': {
+		      try {
+        const length = args[0] ? parseInt(args[0]) : 12; // Default length is 12 if not provided
+        if (isNaN(length) || length < 8) {
+            return reply('Please provide a valid length for the password (Minimum 08 Characters).');
+        }
+
+        const generatePassword = (len) => {
+            const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;:,.<>?';
+            let password = '';
+            for (let i = 0; i < len; i++) {
+                const randomIndex = crypto.randomInt(0, charset.length);
+                password += charset[randomIndex];
+            }
+            return password;
+        };
+
+        const password = generatePassword(length);
+        const message = `Below is your password 🔥:`;
+
+        // Send initial notification message
+        await client.sendMessage(from, { text: message }, { quoted: m });
+
+        // Send the password in a separate message
+        await client.sendMessage(from, { text: password }, { quoted: m });
+    } catch (e) {
+        console.log(e);
+        reply(`Error generating password🤕: ${e.message}`);
+    }
+}
+break;
+
+//========================================================================================================================//	
+        case "funfact": {
+  try {
+        const url = 'https://uselessfacts.jsph.pl/random.json?language=en';  // API for random facts
+        const response = await axios.get(url);
+        const fact = response.data.text;
+
+        const funFact = `
+ *RAVEN-MD RANDOM FUNFACT* 
+
+${fact}
+
+Isn't that interesting? 😄
+`;
+
+  return reply(funFact);
+    } catch (e) {
+        console.log(e);
+        return reply("An error occurred while fetching a fun fact. Please try again later🤕.");
+    }
+}
+break;
+
+//========================================================================================================================//		      
+	      case 'animegirl': {
+try {
+        const apiUrl = `https://api.waifu.pics/sfw/waifu`;
+        const response = await axios.get(apiUrl);
+        const data = response.data;
+
+        await client.sendMessage(from, { image: { url: data.url }, caption: '*GENERATED BY RAVEN MD*' }, { quoted: m });
+    } catch (e) {
+        console.log(e);
+        reply(`*Error Fetching Anime Girl image*: ${e.message}`);
+    }
+}
+break;
+
+//========================================================================================================================//
+case 'rship': {
+	 const toM = (a) => '@' + a.split('@')[0];
+try {
+        // Ensure command is used in a group
+        if (!m.isGroup) {
+            return reply("This command can only be used in groups.");
+        }
+
+        // Get group participants
+        const participants = groupMetadata.participants.map(p => p.id);
+
+        if (participants.length < 2) {
+            return reply("Not enough members to pair.");
+        }
+
+        // Sender of the command
+        const sender = m.sender;
+
+        // Randomly select another participant
+        let randomParticipant;
+        do {
+            randomParticipant = participants[Math.floor(Math.random() * participants.length)];
+        } while (randomParticipant === sender);
+
+        // Reply with the pairing
+        const message = `${toM(sender)} your match is  ${toM(randomParticipant)}\nCongratulations☠️`;
+        await client.sendMessage(from, { text: message, mentions: [sender, randomParticipant] });
+    } catch (e) {
+        console.error("Error in ship command:", e);
+        reply("An error occurred while processing the command. Please try again.");
+    }
+}
+break;
+
+//========================================================================================================================//
+	      case 'calculate': case 'calc': {
+try {
+    if (!text) {
+      return m.reply("*Example usage:* .calculate 5+72");
+    }
+
+    // Validate the input to prevent unsafe operations
+    if (!/^[0-9+\-*/().\s]+$/.test(text)) {
+      return m.reply("Invalid format. Only numbers and +, -, *, /, ( ) are allowed.");
+    }
+
+    // Evaluate the mathematical expression
+    let result = eval(text);
+
+    // Reply with the result
+    m.reply(`${result}`);
+  } catch (e) {
+    console.error("Error in .calculate command:", e);
+    m.reply("Error in calculation. Please check your expression.");
+  }
+}
+break;
+
 //========================================================================================================================//
 case "raven":
 		{
@@ -1825,48 +1984,29 @@ break;
 
 //========================================================================================================================//	      		      
  case 'trt': case 'translate':{
-  	try {
-        // Ensure that there is a language code and text to translate
-        const args = text.split(' ');
-        if (args.length < 2) {
-            return m.reply(" Please provide a language code and text to translate !");
-        }
-
-        // Extract the language code and the text to translate
-        const targetLang = args[0];  // First part is the language code
-        const textToTranslate = args.slice(1).join(' ');  // Join the rest as the text to translate
-
-        // Fetch data from the translation API
-        const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(textToTranslate)}&langpair=en|${targetLang}`);
-
-        // Check if the response is ok
-        if (!response.ok) {
-            return m.reply('Failed to fetch data. Please try again later.');
-        }
-
-        // Parse the response JSON
-        const data = await response.json();
-
-        // Check if the translation is available in the response
-        if (!data.responseData || !data.responseData.translatedText) {
-            return m.reply('No translation found for the provided text.');
-        }
-
-        // Extract the translated text
-        const translatedText = data.responseData.translatedText;
-
-        // Prepare the message to send
-        const message = ` ${translatedText}`;
-
-        // Send the translated message back to the user
-        await client.sendMessage(m.chat, { text: message }, { quoted: m });
-
-    } catch (error) {
-        console.error("Error occurred:", error);
-        m.reply('An error occurred while fetching the data. Please try again later.\n' + error);
+try {
+    // Check if the message is quoted
+    if (!m.quoted) {
+      return m.reply("Please quote a message to translate.");
     }
-}
-    break;
+    // Extract the language code from the text
+    const langCode = text.trim;
+    // Check if a valid language code is provided
+    if (!langCode) {
+      return m.reply("Please provide a valid language code. Example: .translate en");
+    }
+    // Get the quoted message
+    const quotedMessage = m.quoted.text;
+    // Translate the quoted message
+    const translation = await translatte(quotedMessage, { to: langCode });
+    // Send the translated message
+    m.reply(`${translation.text}`);
+  } catch (e) {
+    console.error("Error in .translate command:", e);
+    m.reply("An error occurred while translating the text. Please try again later.");
+  }
+ }
+break;
 
 //========================================================================================================================//		      
  case 'cast': {
@@ -2103,7 +2243,7 @@ m.reply("I am unable to analyze images at the moment\n" + e)
 			if (!quoted) return reply(`𝗪𝗵𝗲𝗿𝗲 𝗶𝘀 𝘁𝗵𝗲 𝗶𝗺𝗮𝗴𝗲 ?`)
 			if (!/image/.test(mime)) return reply(`𝗤𝘂𝗼𝘁𝗲 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲 𝘄𝗶𝘁𝗵 𝗰𝗮𝗽𝘁𝗶𝗼𝗻𝘀 ${prefix + command}`)
 			
-			const { remini } = require('./lib/remini')
+			const { remini } = require('../lib/remini')
 			let media = await quoted.download()
 			let proses = await remini(media, "enhance")
 			client.sendMessage(m.chat, { image: proses, caption: '𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 𝗯𝘆 𝗥𝗮𝘃𝗲𝗻-𝗕𝗼𝘁'}, { quoted: m })
@@ -2415,7 +2555,7 @@ reply(resultt.stderr)
   const textL = m.text.toLowerCase();
   const quotedMessage = m.msg?.contextInfo?.quotedMessage;
 
-if (quotedMessage && textL.startsWith(prefix + "save") && !m.quoted.chat.includes("status@broadcast")) {
+if (Owner && quotedMessage && textL.startsWith(prefix + "save") && !m.quoted.chat.includes("status@broadcast")) {
     return m.reply("You did not tag a status media to save.");
   }
 
@@ -2886,61 +3026,21 @@ if (!text) throw 'Provide a valid Bot Baileys Function to evaluate'
 //========================================================================================================================//		      
 	case "add": {
     if (!isBotAdmin) throw botAdmin;
-	if (!isAdmin) throw admin;
-	if (!m.isGroup) throw group;
-			      
-if (!text) return m.reply("provide number to be added in this format.\n\nadd 254114660061");
-        const _participants = participants.map((user) => user.id);
-        const users = (await Promise.all(
-            text.split(',')
-                .map((v) => v.replace(/[^0-9]/g, ''))
-                .filter((v) => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
-                .map(async (v) => [
-                    v,
-                    await client.onWhatsApp(v + '@s.whatsapp.net'),
-                ]),
-        )).filter((v) => v[1][0]?.exists).map((v) => v[0] + '@c.us');
-
-        const response = await client.query({
-            tag: 'iq',
-            attrs: {
-                type: 'set',
-                xmlns: 'w:g2',
-                to: m.chat,
-            },
-            content: users.map((jid) => ({
-                tag: 'add',
-                attrs: {},
-                content: [{ tag: 'participant', attrs: { jid } }],
-            })),
-        });
-
-        const add = getBinaryNodeChild(response, 'add');
-        const participant = getBinaryNodeChildren(add, 'participant');
-        let respon = await client.groupInviteCode(m.chat);
-
-for (const user of participant.filter((item) => item.attrs.error === 401 || item.attrs.error === 403 || item.attrs.error === 408)) {
-    const jid = user.attrs.jid;
-    const content = getBinaryNodeChild(user, 'add_request');
-    const invite_code = content.attrs.code;
-    const invite_code_exp = content.attrs.expiration;
-
-    let themm;
-    if (user.attrs.error === 401) {
-        themm = `@${jid.split('@')[0]} has blocked the bot.`;
-    } else if (user.attrs.error === 403) {
-        themm = `@${jid.split('@')[0]} has set privacy settings for group adding.`;
-    } else if (user.attrs.error === 408) {
-        themm = `@${jid.split('@')[0]} recently left the group.`;
-    } 
-    return m.reply(themm);
-
-    let links = `${pushname} is trying to add or request you to join the group ${groupMetadata.subject}:\n\nhttps://chat.whatsapp.com/${respon}\n\n${botname} 💠`;
-
-    await client.sendMessage(jid, { text: links }, { quoted: m });
-}
+    if (!isAdmin) throw admin;
+    if (!m.isGroup) throw group;		      
+if (!q || isNaN(q)) return m.reply("provide number to be added in this format.\n\nadd 254114660061");
+try {
+        const userToAdd = `${q}@s.whatsapp.net`;  // Format the phone number
+        // Add the user to the group
+        await client.groupParticipantsUpdate(m.chat, [userToAdd], "add");
+        // Confirm the addition
+        reply(`User ${q} has been added to the group.`);
+    } catch (e) {
+        console.error('Error adding user:', e);
+        reply('An error occurred while adding the user. Please make sure the number is correct and they are not already in the group.');
     }
-	break;
+}
+break;
 		      
 //========================================================================================================================//		      
   case "system": 
@@ -3245,7 +3345,7 @@ const { igdl } = require("ruhend-scraper");
   }
 
 await client.sendMessage(m.chat, {
-      react: { text: '🔄', key: m.key }
+      react: { text: '✅️', key: m.key }
     });
 
 
@@ -3284,7 +3384,7 @@ if (!text.includes('x.com')) {
 }
 	  
 await client.sendMessage(m.chat, {
-      react: { text: '🔄', key: m.key }
+      react: { text: '✅️', key: m.key }
     });
 		      
 try {
@@ -3320,7 +3420,7 @@ if (!text) {
     }
 
 await client.sendMessage(m.chat, {
-                       react: { text: '🔄', key: m.key }
+                       react: { text: '✅️', key: m.key }
                       });
     try {
                 let data = await fetchJson(`https://api.dreaded.site/api/facebook?url=${text}`);
@@ -3362,7 +3462,7 @@ if (!text.includes("tiktok.com")) {
         return m.reply("That is not a TikTok link.");
 }
 await client.sendMessage(m.chat, {
-      react: { text: '🔄', key: m.key }
+      react: { text: '✅️', key: m.key }
     });
 
  try {
@@ -3406,7 +3506,7 @@ if (!text.includes("pin.it")) {
         return m.reply("That is not a pinterest link.");
     }	
 await client.sendMessage(m.chat, {
-      react: { text: '🔄', key: m.key }
+      react: { text: '✅️', key: m.key }
     });
  
 try {
@@ -3809,9 +3909,7 @@ if (!m.isGroup) throw group;
 
 //========================================================================================================================//		      
      case "hidetag": case "tag": { 
-             if (!m.isGroup) throw group; 
-             if (!isBotAdmin) throw botAdmin; 
-             if (!isAdmin) throw admin; 
+             if (!m.isGroup) throw group;          
             client.sendMessage(m.chat, { text : q ? q : '😅𝗕𝗹𝗶𝗻𝗱 𝗧𝗮𝗴𝘀😅' , mentions: participants.map(a => a.id)}, { quoted: m }); 
              } 
  break; 
