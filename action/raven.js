@@ -12,7 +12,9 @@ const Genius = require("genius-lyrics");
 const yts = require("yt-search");
 let lastTextTime = 0;
 const messageDelay = 3000;
+const fetch = require("node-fetch");
 const { DateTime } = require('luxon');
+const BASE_URL = 'https://noobs-api.top';
 const uploadtoimgur = require('../lib/imgur');
 const uploadToCatbox = require('../lib/catbox');
 const advice = require("badadvice");
@@ -154,24 +156,118 @@ async function handleMessageRevocation(client, revocationMessage) {
     const deletedByFormatted = `@${deletedBy.split('@')[0]}`;
     const sentByFormatted = `@${sentBy.split('@')[0]}`;
 
-if (deletedBy.includes(client.user.id) || sentBy.includes(client.user.id)) return;
+    if (deletedBy.includes(client.user.id) || sentBy.includes(client.user.id)) return;
 
     let notificationText = `░𝗥𝗔𝗩𝗘𝗡 𝗔𝗡𝗧𝗜𝗗𝗘𝗟𝗘𝗧𝗘 𝗥𝗘𝗣𝗢𝗥𝗧░\n\n` +
-      ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗯𝘆: ${deletedByFormatted}\n\n`
+      ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗯𝘆: ${deletedByFormatted}\n\n`;
 
-    if (originalMessage.message?.conversation) {
-      // Text message
-      const messageText = originalMessage.message.conversation;
-      notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝘀𝘀𝗮𝗴𝗲: ${messageText}`;
-      await client.sendMessage(client.user.id, { text: notificationText }, { quoted: m });
-    } else if (originalMessage.message?.extendedTextMessage) {
-      // Extended text message (quoted messages)
-      const messageText = originalMessage.message.extendedTextMessage.text;
-      notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗖𝗼𝗻𝘁𝗲𝗻𝘁: ${messageText}`;
-      await client.sendMessage(client.user.id, { text: notificationText }, { quoted: m });
+    try {
+      if (originalMessage.message?.conversation) {
+        // Text message
+        const messageText = originalMessage.message.conversation;
+        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝘀𝘀𝗮𝗴𝗲: ${messageText}`;
+        await client.sendMessage(client.user.id, { text: notificationText });
+      } 
+      else if (originalMessage.message?.extendedTextMessage) {
+        // Extended text message (quoted messages)
+        const messageText = originalMessage.message.extendedTextMessage.text;
+        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗖𝗼𝗻𝘁𝗲𝗻𝘁: ${messageText}`;
+        await client.sendMessage(client.user.id, { text: notificationText });
+      }
+      else if (originalMessage.message?.imageMessage) {
+        // Image message
+        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Image]`;
+        try {
+          const buffer = await client.downloadMediaMessage(originalMessage.message.imageMessage);
+          await client.sendMessage(client.user.id, { 
+            image: buffer,
+	    caption: `${notificationText}\n\nImage caption: ${originalMessage.message.imageMessage.caption}`
+          });
+        } catch (mediaError) {
+          console.error('Failed to download image:', mediaError);
+          notificationText += `\n\n⚠️ Could not recover deleted image (media expired)`;
+          await client.sendMessage(client.user.id, { text: notificationText });
+        }
+      } 
+      else if (originalMessage.message?.videoMessage) {
+        // Video message
+        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Video]`;
+        try {
+          const buffer = await client.downloadMediaMessage(originalMessage.message.videoMessage);
+          await client.sendMessage(client.user.id, { 
+            video: buffer, 
+            caption: `${notificationText}\n\nVideo caption: ${originalMessage.message.videoMessage.caption}`
+          });
+        } catch (mediaError) {
+          console.error('Failed to download video:', mediaError);
+          notificationText += `\n\n⚠️ Could not recover deleted video (media expired)`;
+          await client.sendMessage(client.user.id, { text: notificationText });
+        }
+      } else if (originalMessage.message?.stickerMessage) {
+	 notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Sticker]`;
+      // Sticker message
+      const buffer = await client.downloadMediaMessage(originalMessage.message.stickerMessage);      
+      await client.sendMessage(client.user.id, { sticker: buffer, 
+contextInfo: {
+          externalAdReply: {
+          title: notificationText,
+          body: `DELETED BY: ${deletedByFormatted}`,
+          thumbnailUrl: "https://files.catbox.moe/7f98vp.jpg",
+          sourceUrl: '',
+          mediaType: 1,
+          renderLargerThumbnail: true
+          }}});
+      } else if (originalMessage.message?.documentMessage) {
+        notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Document]`;
+        // Document message
+        const docMessage = originalMessage.message.documentMessage;
+        const fileName = docMessage.fileName || `document_${Date.now()}.dat`;
+        console.log('Attempting to download document...');
+        const buffer = await client.downloadMediaMessage(docMessage);
+        
+       if (!buffer) {
+            console.log('Download failed - empty buffer');
+            notificationText += ' (Download Failed)';
+            return;
+        }
+        
+        console.log('Sending document back...');
+        await client.sendMessage(client.user.id, { 
+            document: buffer, 
+            fileName: fileName,
+            mimetype: docMessage.mimetype || 'application/octet-stream',
+contextInfo: {
+          externalAdReply: {
+          title: notificationText,
+          body: `DELETED BY: ${deletedByFormatted}`,
+          thumbnailUrl: "https://files.catbox.moe/7f98vp.jpg",
+          sourceUrl: '',
+          mediaType: 1,
+          renderLargerThumbnail: true
+          }}});
+      } else if (originalMessage.message?.audioMessage) {
+	      notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Audio]`;
+      // Audio message
+      const buffer = await client.downloadMediaMessage(originalMessage.message.audioMessage);
+      const isPTT = originalMessage.message.audioMessage.ptt === true;
+      await client.sendMessage(client.user.id, { audio: buffer, ptt: isPTT, mimetype: 'audio/mpeg', 
+contextInfo: {
+          externalAdReply: {
+          title: notificationText,
+          body: `DELETED BY: ${deletedByFormatted}`,
+          thumbnailUrl: "https://files.catbox.moe/7f98vp.jpg",
+          sourceUrl: '',
+          mediaType: 1,
+          renderLargerThumbnail: true
+          }}});
+      }	      
+    } catch (error) {
+      console.error('Error handling deleted message:', error);
+      notificationText += `\n\n⚠️ Error recovering deleted content 😓`;
+      await client.sendMessage(client.user.id, { text: notificationText });
     }
   }
-  }
+}
 //========================================================================================================================//
 //========================================================================================================================//	  
     // Push Message To Console
@@ -396,6 +492,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╔══�
 > 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗  𝗖𝗠𝗗𝗦
 ╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
 ┃✦│ 𝗩𝗶𝗱𝗲𝗼
+┃✦│ 𝗩𝗶𝗱𝗲𝗼2
 ┃✦│ 𝗣𝗹𝗮𝘆
 ┃✦│ 𝗣𝗹𝗮𝘆2
 ┃✦│ 𝗦𝗼𝗻𝗴
@@ -785,27 +882,17 @@ await sleep(messageDelay);
 break;
 
 //========================================================================================================================//
-	      case "song": {
-const yts = require("yt-search");
-const fetch = require("node-fetch"); 
-
-  try {   
-    if (!text) {
-      return m.reply("What song you want to download.");
-    }
-
+	      case "song2": {
+    if (!text) m.reply("What song you want to download.");
+try {
     let search = await yts(text);
-    if (!search.all.length) {
-      return reply("No results found for your query.");
-    }
+    if (!search.all.length) reply("No results found for your query.");
     let link = search.all[0].url; 
-
     const apiUrl = `https://keith-api.vercel.app/download/dlmp3?url=${link}`;
-
     let response = await fetch(apiUrl);
     let data = await response.json();
 
-    if (data.status && data.result) {
+if (data.status && data.result) {
       const audioData = {
         title: data.result.title,
         downloadUrl: data.result.downloadUrl,
@@ -824,72 +911,106 @@ await client.sendMessage(
       );
 
       return;
-    } else {
-      
+    } else { 
       return reply("Unable to fetch the song. Please try again later.");
     }
   } catch (error) {
-    
     return reply(`An error occurred: `);
   }
 }
-	break;
+break;
 
 //========================================================================================================================//	      		      
-  case "song2": {
-const yts = require("yt-search");
-const fetch = require("node-fetch");
-    try {
-        if (!text) return m.reply("What song do you want to download?");
-
-        const { videos } = await yts(text);
-        if (!videos || videos.length === 0) return m.reply("No songs found!");
-	    
-await m.reply(`_Please wait your download is in progress_`);
-	    
-        const urlYt = videos[0].url;
-        let data = await fetch(`https://api.dreaded.site/api/ytdl/audio?url=${urlYt}`);
-
-        if (!data || !data.result || !data.result.url) {
-            return m.reply("Failed to fetch audio from the API.");
-        }
-
-const audioUrl = data.result.url;
-const title = data.result.title;
-
-        await client.sendMessage(
-            m.chat,
-            {
-                audio: { url: audioUrl },
-                mimetype: "audio/mpeg",
-                fileName: `${title}.mp3`,
-            },
-            { quoted: m }
-        );
-    } catch (error) {
-        m.reply("Download failed\n" + error.message);
+  case "song": {		      
+ if (!args || args.length === 0) {
+      return client.sendMessage(from, { text: 'Please provide a song name or keyword to search.' }, { quoted: m });
     }
-}
- break;
+
+try {
+      const searchQuery = args.join(' ');
+      const searchResults = await yts(searchQuery);
+      const videos = searchResults.videos;
+
+if (!videos || videos.length === 0) {
+        return client.sendMessage(from, { text: 'No results found on YouTube.' }, { quoted: message });
+      }
+	 
+m.reply("_Please wait your download is in progress_");
+	 
+      const video = videos[0];
+      const videoId = video.videoId;
+      const mp3Url = `${BASE_URL}/dipto/ytDl3?link=${videoId}&format=mp3`;
+
+      const mp3Response = await axios.get(mp3Url);
+      const mp3Data = mp3Response.data;
+
+if (mp3Data.success !== 'true' || !mp3Data.downloadLink) {
+        return client.sendMessage(from, { text: 'Failed to retrieve MP3 download link.' }, { quoted: m });
+      }
+
+await client.sendMessage(from, {
+          audio: { url: mp3Data.downloadLink },
+          mimetype: 'audio/mpeg',
+          ptt: false
+        }, { quoted: m });
+	    
+    } catch (error) {
+      console.error('Error:', error);
+      await client.sendMessage(from, { text: 'An error occurred while processing your request.' }, { quoted: m });
+    }
+  }
+break;
 		      
 //========================================================================================================================//
-	      case 'video': {
-const yts = require("yt-search");
-const fetch = require("node-fetch"); 
-
-  try { 
-    if (!text) {
-      return reply("What video you want to download?");
+case "video": {		      
+if (!args || args.length === 0) {
+      return client.sendMessage(from, { text: 'Please provide a video name you want to download.' }, { quoted: m });
     }
+
+try {
+      const searchQuery = args.join(' ');
+      const searchResults = await yts(searchQuery);
+      const videos = searchResults.videos;
+
+      if (!videos || videos.length === 0) {
+        return client.sendMessage(from, { text: 'No results found on YouTube.' }, { quoted: m });
+      }
+	    
+m.reply("_Please wait your download is in progress_");
+	    
+      const video = videos[0];
+      const videoId = video.videoId;
+      const mp4Url = `${BASE_URL}/dipto/ytDl3?link=${videoId}&format=mp4`;
+
+      // Download and send MP4
+      const mp4Response = await axios.get(mp4Url);
+      const mp4Data = mp4Response.data;
+
+ if (mp4Data.success !== 'true' || !mp4Data.downloadLink) {
+        return client.sendMessage(chatId, { text: 'Failed to retrieve MP4 download link.' }, { quoted: m });
+      }
+
+      await client.sendMessage(from, {
+        video: { url: mp4Data.downloadLink },
+        mimetype: 'video/mp4',
+        caption: "𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗗 𝗕𝗬 𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧",
+      }, { quoted: m });
+    } catch (error) {
+      console.error('Error:', error);
+      await client.sendMessage(from, { text: 'An error occurred while processing your request.' }, { quoted: m });
+    }
+  }
+  break;
+//========================================================================================================================//		      
+   
+   case 'video2': { 
+    if (!text) reply("What video you want to download?");
  
+ try { 
     let search = await yts(text);
-    if (!search.all.length) {
-      return reply(client, m, "No results found for your query.");
-    }
+    if (!search.all.length) reply("No results found for your query.");
     let link = search.all[0].url; 
-
     const apiUrl = `https://apis-keith.vercel.app/download/dlmp4?url=${link}`;
-
     let response = await fetch(apiUrl);
     let data = await response.json();
 
@@ -902,7 +1023,7 @@ const fetch = require("node-fetch");
         quality: data.result.quality,
       };
 
-      await client.sendMessage(
+ await client.sendMessage(
         m.chat,
         {
           video: { url: videoData.downloadUrl },
@@ -911,14 +1032,11 @@ const fetch = require("node-fetch");
         },
         { quoted: m }
       );
-
       return;
     } else {
-      
       return reply("Unable to fetch the video. Please try again later.");
     }
   } catch (error) {
- 
     return reply(`An error occurred: ${error.message}`);
   }
 };
