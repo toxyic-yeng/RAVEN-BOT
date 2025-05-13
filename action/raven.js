@@ -12,6 +12,7 @@ const Genius = require("genius-lyrics");
 const yts = require("yt-search");
 let lastTextTime = 0;
 const messageDelay = 3000;
+const ffmpeg = require("fluent-ffmpeg");
 const fetch = require("node-fetch");
 const { DateTime } = require('luxon');
 const BASE_URL = 'https://noobs-api.top';
@@ -721,7 +722,7 @@ if (menu === 'VIDEO') {
                    client.sendMessage(m.chat, {
                         video: fs.readFileSync('./Media/menu.mp4'),
                         caption: cap,
-                        gifPlayback: true
+                        gifPlayback: false
                     }, {
                         quoted: m
                     })
@@ -876,7 +877,7 @@ await sleep(messageDelay);
      }
     } catch (error) {
         console.error(error);
-        await reply("An error occurred. Please try again later.");
+        await reply("An error occurred while fetching the pairingcode. API might be down.");
     }
 };
 break;
@@ -923,7 +924,7 @@ break;
 //========================================================================================================================//	      		      
   case "song": {		      
  if (!args || args.length === 0) {
-      return client.sendMessage(from, { text: 'Please provide a song name or keyword to search.' }, { quoted: m });
+      return client.sendMessage(from, { text: 'Please provide a song name.' }, { quoted: m });
     }
 
 try {
@@ -1113,15 +1114,8 @@ let options = []
 
 //========================================================================================================================//		      
 	      case 'play':{
-const axios = require('axios');
-const yts = require("yt-search");
-const ffmpeg = require("fluent-ffmpeg");
-const fs = require("fs");
-const path = require("path");
-
-  try {
-    if (!text) return m.reply("What song do you want to download?");
-
+     if (!text) return m.reply("What song do you want to download?");
+try {
     let search = await yts(text);
     let link = search.all[0].url;
 
@@ -1156,7 +1150,7 @@ const apis = [
             .toFormat("mp3")
             .save(outputPath)
             .on("end", async () => {
-              await client.sendMessage(
+await client.sendMessage(
                 m.chat,
                 {
                   document: { url: outputPath },
@@ -1171,11 +1165,9 @@ const apis = [
             .on("error", (err) => {
               m.reply("Download failed\n" + err.message);
             });
-
           return;
         }
       } catch (e) {
-        // Continue to the next API if one fails
         continue;
       }
    }
@@ -1184,7 +1176,7 @@ const apis = [
     m.reply("Download failed\n" + error.message);
   }
 }
-	  break;
+break;
 
 //========================================================================================================================//		      
  case "play2": {	      
