@@ -157,32 +157,33 @@ async function handleMessageRevocation(client, revocationMessage) {
     const deletedByFormatted = `@${deletedBy.split('@')[0]}`;
     const sentByFormatted = `@${sentBy.split('@')[0]}`;
 
-    if (deletedBy.includes(client.user.id) || sentBy.includes(client.user.id)) return;
+ if (deletedByFormatted.includes(client.user.id) || sentByFormatted.includes(client.user.id)) return;
 
     let notificationText = `░𝗥𝗔𝗩𝗘𝗡 𝗔𝗡𝗧𝗜𝗗𝗘𝗟𝗘𝗧𝗘 𝗥𝗘𝗣𝗢𝗥𝗧░\n\n` +
       ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗯𝘆: ${deletedByFormatted}\n\n`;
 
     try {
       if (originalMessage.message?.conversation) {
-        // Text message
+// Text message
         const messageText = originalMessage.message.conversation;
         notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝘀𝘀𝗮𝗴𝗲: ${messageText}`;
         await client.sendMessage(client.user.id, { text: notificationText });
       } 
       else if (originalMessage.message?.extendedTextMessage) {
-        // Extended text message (quoted messages)
+// Extended text message (quoted messages)
         const messageText = originalMessage.message.extendedTextMessage.text;
         notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗖𝗼𝗻𝘁𝗲𝗻𝘁: ${messageText}`;
         await client.sendMessage(client.user.id, { text: notificationText });
       }
       else if (originalMessage.message?.imageMessage) {
-        // Image message
+// Image message
+	const ImageM = originalMessage.message.imageMessage;
         notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Image]`;
         try {
-          const buffer = await client.downloadMediaMessage(originalMessage.message.imageMessage);
-          await client.sendMessage(client.user.id, { 
+          const buffer = await client.downloadMediaMessage(ImageM);
+await client.sendMessage(client.user.id, { 
             image: buffer,
-	    caption: `${notificationText}\n\nImage caption: ${originalMessage.message.imageMessage.caption}`
+	    caption: `${notificationText}\n\nImage caption: ${ImageM.caption}`
           });
         } catch (mediaError) {
           console.error('Failed to download image:', mediaError);
@@ -191,13 +192,14 @@ async function handleMessageRevocation(client, revocationMessage) {
         }
       } 
       else if (originalMessage.message?.videoMessage) {
-        // Video message
+// Video message
+	const VideoM = originalMessage.message.videoMessage;    
         notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Video]`;
         try {
-          const buffer = await client.downloadMediaMessage(originalMessage.message.videoMessage);
-          await client.sendMessage(client.user.id, { 
+          const buffer = await client.downloadMediaMessage(VideoM);
+await client.sendMessage(client.user.id, { 
             video: buffer, 
-            caption: `${notificationText}\n\nVideo caption: ${originalMessage.message.videoMessage.caption}`
+            caption: `${notificationText}\n\nVideo caption: ${VideoM.caption}`
           });
         } catch (mediaError) {
           console.error('Failed to download video:', mediaError);
@@ -205,61 +207,56 @@ async function handleMessageRevocation(client, revocationMessage) {
           await client.sendMessage(client.user.id, { text: notificationText });
         }
       } else if (originalMessage.message?.stickerMessage) {
-	 notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Sticker]`;
-      // Sticker message
-      const buffer = await client.downloadMediaMessage(originalMessage.message.stickerMessage);      
+// Sticker message
+      const StickerM = originalMessage.message.stickerMessage;      
+      notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Sticker]`;
+      const buffer = await client.downloadMediaMessage(StickerM);      
       await client.sendMessage(client.user.id, { sticker: buffer, 
 contextInfo: {
           externalAdReply: {
           title: notificationText,
-          body: `DELETED BY: ${deletedByFormatted}`,
+          body: `𝗗𝗘𝗟𝗘𝗧𝗘𝗗 𝗕𝗬: ${deletedByFormatted}`,
           thumbnailUrl: "https://files.catbox.moe/7f98vp.jpg",
           sourceUrl: '',
           mediaType: 1,
-          renderLargerThumbnail: true
+          renderLargerThumbnail: false
           }}});
       } else if (originalMessage.message?.documentMessage) {
+// Document message
         notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Document]`;
-        // Document message
         const docMessage = originalMessage.message.documentMessage;
-        const fileName = docMessage.fileName || `document_${Date.now()}.dat`;
-        console.log('Attempting to download document...');
+        const fileName = docMessage.fileName;
         const buffer = await client.downloadMediaMessage(docMessage);
         
-       if (!buffer) {
-            console.log('Download failed - empty buffer');
-            notificationText += ' (Download Failed)';
-            return;
-        }
-        
-        console.log('Sending document back...');
-        await client.sendMessage(client.user.id, { 
+ await client.sendMessage(client.user.id, { 
             document: buffer, 
             fileName: fileName,
-            mimetype: docMessage.mimetype || 'application/octet-stream',
+            mimetype: docMessage.mimetype,
 contextInfo: {
           externalAdReply: {
           title: notificationText,
-          body: `DELETED BY: ${deletedByFormatted}`,
+          body: `𝗗𝗘𝗟𝗘𝗧𝗘𝗗 𝗕𝗬: ${deletedByFormatted}`,
           thumbnailUrl: "https://files.catbox.moe/7f98vp.jpg",
           sourceUrl: '',
           mediaType: 1,
-          renderLargerThumbnail: true
+          renderLargerThumbnail: false
           }}});
       } else if (originalMessage.message?.audioMessage) {
-	      notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Audio]`;
-      // Audio message
-      const buffer = await client.downloadMediaMessage(originalMessage.message.audioMessage);
-      const isPTT = originalMessage.message.audioMessage.ptt === true;
+// Audio message     
+	const AudioM = originalMessage.message.audioMessage;    
+	notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Audio]`;
+      
+      const buffer = await client.downloadMediaMessage(AudioM);
+      const isPTT = AudioM.ptt === true;
       await client.sendMessage(client.user.id, { audio: buffer, ptt: isPTT, mimetype: 'audio/mpeg', 
 contextInfo: {
           externalAdReply: {
           title: notificationText,
-          body: `DELETED BY: ${deletedByFormatted}`,
+          body: `𝗗𝗘𝗟𝗘𝗧𝗘𝗗 𝗕𝗬: ${deletedByFormatted}`,
           thumbnailUrl: "https://files.catbox.moe/7f98vp.jpg",
           sourceUrl: '',
           mediaType: 1,
-          renderLargerThumbnail: true
+          renderLargerThumbnail: false
           }}});
       }	      
     } catch (error) {
