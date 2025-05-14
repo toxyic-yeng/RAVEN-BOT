@@ -157,12 +157,13 @@ async function handleMessageRevocation(client, revocationMessage) {
     const deletedByFormatted = `@${deletedBy.split('@')[0]}`;
     const sentByFormatted = `@${sentBy.split('@')[0]}`;
 
- if (deletedByFormatted.includes(client.user.id) || sentByFormatted.includes(client.user.id)) return;
-
     let notificationText = `░𝗥𝗔𝗩𝗘𝗡 𝗔𝗡𝗧𝗜𝗗𝗘𝗟𝗘𝗧𝗘 𝗥𝗘𝗣𝗢𝗥𝗧░\n\n` +
       ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗯𝘆: ${deletedByFormatted}\n\n`;
 
-    try {
+try {
+	    
+if (deletedBy.includes(botNumber)) return;
+	    
       if (originalMessage.message?.conversation) {
 // Text message
         const messageText = originalMessage.message.conversation;
@@ -226,12 +227,13 @@ contextInfo: {
         notificationText += ` 𝗗𝗲𝗹𝗲𝘁𝗲𝗱 𝗠𝗲𝗱𝗶𝗮: [Document]`;
         const docMessage = originalMessage.message.documentMessage;
         const fileName = docMessage.fileName;
+	const mimetype = docMessage.mimetype;     
         const buffer = await client.downloadMediaMessage(docMessage);
         
  await client.sendMessage(client.user.id, { 
             document: buffer, 
             fileName: fileName,
-            mimetype: docMessage.mimetype,
+            mimetype: mimetype,
 contextInfo: {
           externalAdReply: {
           title: notificationText,
