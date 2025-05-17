@@ -4,7 +4,7 @@ const {
   useMultiFileAuthState,
   DisconnectReason,
   fetchLatestBaileysVersion,
-  makeInMemoryStore,
+  makeCacheableSignalKeyStore,
   downloadContentFromMessage,
   jidDecode,
   proto,
