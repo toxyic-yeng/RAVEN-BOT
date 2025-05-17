@@ -54,7 +54,7 @@ module.exports = raven = async (client, m, chatUpdate, store) => {
 //========================================================================================================================//
 //========================================================================================================================//	  
     const Heroku = require("heroku-client");  
-    const command = body.startsWith(prefix).trim().split(/ +/).shift().toLowerCase();
+    const command = body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase();
     const args = body.trim().split(/ +/).slice(1);
     const pushname = m.pushName || "No Name";
     const botNumber = await client.decodeJid(client.user.id);
