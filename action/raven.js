@@ -333,6 +333,12 @@ const ramp = [ "■□□□□□ 10%", "■■□□□□ 20%", "■■■□
 const ramm = ramp[Math.floor(Math.random() * ramp.length)];      
 return (ramm)  
 }  
+//========================================================================================================================//   
+const totalcmds = () => {
+   var mytext = fs.readFileSync("./action/raven.js").toString();
+    var numUpper = (mytext.match(/case ['"]/g) || []).length;
+    return numUpper;
+}	  
 //========================================================================================================================// 
     if (gptdm === 'TRUE' && m.chat.endsWith("@s.whatsapp.net")) {
 if (itsMe) return;
@@ -475,20 +481,21 @@ if (antilinkall === 'TRUE' && body.includes('https://') && !Owner && isBotAdmin 
     if (cmd) {
       switch (command) {
         case "menu":
-		      await mp3d ()
+	  await mp3d ()
 		      
 let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╔══════〚 𝗥𝗔𝗩𝗘𝗡  𝗕𝗢𝗧 〛══════╗
 ║✫╭═╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
 ║✫┃ 𝗨𝘀𝗲𝗿 : ${m.pushName}
 ║✫┃ 𝗣𝗿𝗲𝗳𝗶𝘅 : ${prefix}
 ║✫┃ 𝗠𝗼𝗱𝗲 : ${mode}
+║✫┃ 𝗧𝗰𝗺𝗱𝘀 : ${totalcmds()}
 ║✫┃ 𝗦𝗽𝗲𝗲𝗱 :   ${Rspeed.toFixed(4)} 𝗠𝘀
 ║✫┃ 𝗧𝗶𝗺𝗲 : ${getCurrentTimeInNairobi()} on ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}
 ║✫┃ 𝗥𝗔𝗠 𝗨𝘀𝗮𝗴𝗲 :  ${ram()}
 ║✫┃═════════════════════
 ║✫┃  █■█■█■█■█■█■█■█■█■█
 ║✫┃═════════════════════
-╚══╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍══╝
+╚════════════════════════╝
 > 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗  𝗖𝗠𝗗𝗦
 ╭══⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊══╮
 ┃✦│ 𝗩𝗶𝗱𝗲𝗼
@@ -626,6 +633,7 @@ let cap = `𝗛𝗲𝘆 𝘁𝗵𝗲𝗿𝗲😁, ${getGreeting()}\n\n╔══�
 ┃□│ 𝗕𝗿𝗼𝗮𝗱𝗰𝗮𝘀𝘁
 ┃□│ 𝗝𝗼𝗶𝗻
 ┃□│ 𝗚𝗲𝘁𝘃𝗮𝗿
+┃□│ 𝗚𝗲𝘁𝗰𝗮𝘀𝗲
 ┃□│ 𝗥𝗲𝗱𝗲𝗽𝗹𝗼𝘆
 ┃□│ 𝗨𝗽𝗱𝗮𝘁𝗲
 ┃□│ 𝗦𝗲𝘁𝘃𝗮𝗿
@@ -721,7 +729,7 @@ if (menu === 'VIDEO') {
                    client.sendMessage(m.chat, {
                         video: fs.readFileSync('./Media/menu.mp4'),
                         caption: cap,
-                        gifPlayback: false
+                        gifPlayback: true
                     }, {
                         quoted: m
                     })
@@ -765,6 +773,22 @@ client.sendContact(m.chat, Dev, m)
 break;
 
 //========================================================================================================================//
+		      
+  case "getcase": {
+if (!Owner) return reply('Only owner')
+if (!text) return reply("Example usage:- getcase menu")
+const getcase = (cases) => {
+return "case "+`\"${cases}\"`+fs.readFileSync('./action/raven.js').toString().split('case \"'+cases+'\"')[1].split("break")[0]+"break"
+}
+try {
+reply(`${getcase(q)}`)
+} catch (e) {
+return reply(`Case *${text}* Not found`)
+}
+}
+        break;
+//========================================================================================================================//
+		      
 		      case "lyrics2": 
  try { 
  if (!text) return reply("Provide a song name!"); 
