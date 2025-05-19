@@ -246,7 +246,7 @@ if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
       console.log(color("Congrats, RAVEN-BOT has successfully connected to this server", "green"));
       console.log(color("Follow me on Instagram as Nic.k_hunter", "red"));
       console.log(color("Text the bot number with menu to check my command list"));
-      const Texxt = `✅ 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 ╍>〚𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧〛\n`+`👥 𝗠𝗼𝗱𝗲 ╍>〚${mode}〛\n`+`👤 𝗣𝗿𝗲𝗳𝗶𝘅 ╍>〚${prefix}〛`
+      const Texxt = `✅ 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱  ╍>〚𝗥𝗔𝗩𝗘𝗡-𝗕𝗢𝗧〛\n`+`👥 𝗠𝗼𝗱𝗲  ╍>〚${mode}〛\n`+`👤 𝗣𝗿𝗲𝗳𝗶𝘅  ╍>〚 ${prefix} 〛`
       client.sendMessage(client.user.id, { text: Texxt });
     }
   });
