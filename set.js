@@ -19,7 +19,6 @@ const antibot = process.env.ANTIBOT || 'FALSE';
 const author = process.env.STICKER_AUTHOR ||'𝗕𝗢𝗧';
 const packname = process.env.STICKER_PACKNAME || '𝗥𝗔𝗩𝗘𝗡';
 const antitag = process.env.ANTITAG || 'TRUE';
-const dev = process.env.DEV || '254114660061';
 const owner = dev.split(",");
 const menulink = process.env.MENU_LINK || 'https://files.catbox.moe/duv8ac.jpg';
 const menu = process.env.MENU_TYPE || 'VIDEO';
